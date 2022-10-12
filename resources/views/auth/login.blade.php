@@ -1,113 +1,59 @@
-@extends('layout')
+@extends('header')
 
-  
-
-@section('content')
-
-<main class="login-form">
-
-  <div class="cotainer">
-
-      <div class="row justify-content-center">
-
-          <div class="col-md-8">
-
-              <div class="card">
-
-                  <div class="card-header">Login</div>
-
-                  <div class="card-body">
-
-  
-
-                      <form action="{{ route('login.post') }}" method="POST">
-
-                          @csrf
-
-                          <div class="form-group row">
-
-                              <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-
-                              <div class="col-md-6">
-
-                                  <input type="text" id="email_address" class="form-control" name="email" required autofocus>
-
-                                  @if ($errors->has('email'))
-
-                                      <span class="text-danger">{{ $errors->first('email') }}</span>
-
-                                  @endif
-
-                              </div>
-
-                          </div>
-
-  
-
-                          <div class="form-group row">
-
-                              <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                              <div class="col-md-6">
-
-                                  <input type="password" id="password" class="form-control" name="password" required>
-
-                                  @if ($errors->has('password'))
-
-                                      <span class="text-danger">{{ $errors->first('password') }}</span>
-
-                                  @endif
-
-                              </div>
-
-                          </div>
-
-  
-
-                          <div class="form-group row">
-
-                              <div class="col-md-6 offset-md-4">
-
-                                  <div class="checkbox">
-
-                                      <label>
-
-                                          <input type="checkbox" name="remember"> Remember Me
-
-                                      </label>
-
-                                  </div>
-
-                              </div>
-
-                          </div>
-
-  
-
-                          <div class="col-md-6 offset-md-4">
-
-                              <button type="submit" class="btn btn-primary">
-
-                                  Login
-
-                              </button>
-
-                          </div>
-
-                      </form>
-
-                        
-
-                  </div>
-
-              </div>
-
-          </div>
-
-      </div>
-
-  </div>
-
-</main>
+@section('login')
+<body class="nk-body bg-white npc-default pg-auth">
+    <div class="nk-app-root">
+        <!-- main @s -->
+        <div class="nk-main ">
+            <!-- wrap @s -->
+            <div class="nk-wrap nk-wrap-nosidebar">
+                <!-- content @s -->
+                <div class="nk-content ">
+                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
+                        <div class="brand-logo pb-4 text-center">
+                            <center><img src="{{ asset('images/jyplogo.png') }}" height="250"></center>
+                        </div>
+                        <div class="card">
+                            <div class="card-inner card-inner-lg">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-head-content">
+                                        <center><h4 class="nk-block-title">Sign-In</h4></center>
+                                    </div>
+                                </div>
+                                <form method="POST" action="{{ route('login.post') }}" autocomplete="on">
+                                    <div class="form-group">
+                                        <div class="form-label-group">
+                                        </div>
+                                        <div class="form-control-wrap">
+                                            <center><input type="text" class="form-control form-control-lg" id="default-01" placeholder="Email address"></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <center><input type="password" class="form-control form-control-lg" id="password" placeholder="Password"></center>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <center><button class="btn btn-lg btn-primary btn-block">SIGN IN</button></center>
+                                    </div>
+                                </form>
+                                <center><div class="form-note-s2 pt-4">No account yet?<a
+                                    href="{{ route('register') }}"> Sign up</a>
+                                </div></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <!-- wrap @e -->
+            </div>
+            <!-- content @e -->
+        </div>
+        <!-- main @e -->
+    </div>
 
 @endsection
+
+
+
