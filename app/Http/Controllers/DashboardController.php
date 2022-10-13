@@ -8,6 +8,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        return view('pages.dashboard');
+    }
+    public function history()
+    {
+        return view('pages.history');
+    }
+    public function loc()
+    {
+        return view('pages.location');
+    }
+    public function sched()
+    {
+        return view('pages.schedule');
     }
 }

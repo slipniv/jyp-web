@@ -21,16 +21,17 @@
                                     </div>
                                 </div>
                                 <form method="POST" action="{{ route('login.post') }}" autocomplete="on">
+                                    @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
                                         </div>
                                         <div class="form-control-wrap">
-                                            <center><input type="text" class="form-control form-control-lg" id="default-01" placeholder="Email address"></center>
+                                            <center><input type="text" class="form-control form-control-lg" id="email" name="email"  placeholder="Email address"></center>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control-wrap">
-                                            <center><input type="password" class="form-control form-control-lg" id="password" placeholder="Password"></center>
+                                            <center><input type="password" class="form-control form-control-lg" id="password" name="password"  placeholder="Password"></center>
                                         </div>
                                     </div>
                                     <div class="form-group">

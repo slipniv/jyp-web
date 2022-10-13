@@ -37,6 +37,9 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index']); 
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('history', [DashboardController::class, 'history'])->name('history');
+    Route::get('location', [DashboardController::class, 'loc'])->name('location');
+    Route::get('schedule', [DashboardController::class, 'sched'])->name('schedule');
 });

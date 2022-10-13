@@ -34,6 +34,15 @@ class AuthController extends Controller
      *
      * @return response()
      */
+    public function driver()
+    {
+        return view('drivers');
+    }
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function postLogin(Request $request)
     {
         $request->validate([
@@ -71,7 +80,7 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard');
+        return view('pages.dashboard');
     }
     /**
      * Write code on Method
