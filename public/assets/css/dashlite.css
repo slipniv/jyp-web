@@ -13414,9 +13414,6 @@ a.alert:hover {
   align-items: center;
   flex-grow: 0;
 }
-
-
-
 .btn-extext {
   font-size: 12px;
   font-weight: 500;
@@ -30865,7 +30862,7 @@ select:-webkit-autofill:focus {
 .sub-text {
   display: block;
   font-size: 13px;
-  color: #72787d;
+  color: #4c5055;
 }
 .sub-text span + .dot, .sub-text .dot + span {
   margin-left: 0.25rem;
@@ -34202,15 +34199,9 @@ button.close {
   font-size: 12px;
   font-weight: 500;
 }
-
-.tb-leada{
-  margin-left: 28px;
-  font-weight: 500;
-  color: #364a63;
-  display: block;
-  line-height: 1.4;
+.tb-leada {
+  padding-left: 22px;
 }
-
 .nk-tb-list .tb-lead, .nk-tb-list .tb-amount {
   font-weight: 500;
   color: #364a63;
@@ -34303,7 +34294,8 @@ button.close {
 .nk-tb-head .nk-tb-col {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #8094ae;
+  color: #364a63;
+  font-weight: 500;
   font-size: 0.9em;
   border-bottom: 1px solid #dbdfea;
 }
@@ -34319,7 +34311,6 @@ button.close {
 .nk-tb-actions {
   display: flex;
   align-items: center;
-  position: relative;
 }
 .nk-tb-ulist .nk-tb-actions, .nk-tb-actions-adj .nk-tb-actions {
   right: -0.5rem;

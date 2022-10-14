@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DriversController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ScheduleController;
+use App\Models\Drivers;
+use App\Models\Schedule;
+use App\Models\Location;
   
 
 /*
@@ -39,7 +46,11 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('history', [DashboardController::class, 'history'])->name('history');
-    Route::get('location', [DashboardController::class, 'loc'])->name('location');
-    Route::get('schedule', [DashboardController::class, 'sched'])->name('schedule');
+    Route::get('history', [HistoryController::class, 'index'])->name('history');
+    Route::get('location', [LocationController::class, 'index'])->name('location');
+    Route::get('schedule', [ScheduleController::class, 'index'])->name('schedule');
+    Route::get('drivers', [DriversController::class, 'index'])->name('drivers');
+    Route::post('addDriver', [DriversController::class, 'add']);
+    Route::post('updateDriver/{id}', [DriversController::class, 'update'])->name('updateDriver');
+    Route::post('deleteDriver/{id}', [DriversController::class, 'delete'])->name('deleteDriver');
 });

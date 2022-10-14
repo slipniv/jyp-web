@@ -44,10 +44,12 @@
                                 <div class="nk-tb-col tb-col-lg"><span class="tb-lead">Schedule Date</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="tb-lead">Status</span></div>
                                 <div class="nk-tb-col tb-col-md"><span class="tb-leada">Action</span></div>
-                            </div><!-- .nk-tb-item -->
+                            </div>
+                            @foreach ($sched_arr as $dis)
+                            <!-- .nk-tb-item -->
                             <div class="nk-tb-item">
                                 <div class="nk-tb-col tb-col-mb">
-                                    <span class="sub-text">1</span>
+                                    <span class="sub-text">{{ $dis->id }}</span>
                                 </div>
                                 <div class="nk-tb-col">
                                     <span class="sub-text">1221 323N</span>   
@@ -89,6 +91,7 @@
                                     </ul>
                                 </div>
                             </div><!-- .nk-tb-item -->
+                            @endforeach
                         </div><!-- .nk-tb-list -->
                     </div><!-- .card-inner -->
                 </div><!-- .card-inner-group -->
@@ -110,31 +113,35 @@
                             <div class="row gx-4 gy-3">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="name">Name</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="name" required>
+                                        <label class="form-label" for="default-06">Name</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" id="default-06">
+                                                    @foreach ($sched_arr as $ad)
+                                                    <option value="{{ $ad->name }}">{{ $ad->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="platenumber">Plate Number</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="platenumber" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="area">Destination</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="area" required>
+                                        <label class="form-label" for="default-06">Destination</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" id="default-06">
+                                                    @foreach ($area as $dd)
+                                                    <option value="{{ $dd->area }}">{{ $dd->area }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label">Start Date & Time</label>
+                                        <label class="form-label">Date & Time</label>
                                         <div class="row gx-2">
                                             <div class="w-55">
                                                 <div class="form-control-wrap">
@@ -158,7 +165,7 @@
                                 <div class="col-12">
                                     <ul class="d-flex justify-content-between gx-4 mt-1">
                                         <li>
-                                            <button id="addEvent" type="submit" class="btn btn-primary">Add Event</button>
+                                            <button id="addEvent" type="submit" class="btn btn-primary">Add Schedule</button>
                                         </li>
                                         <li>
                                             <button id="resetEvent" data-bs-dismiss="modal" class="btn btn-danger btn-dim">Discard</button>

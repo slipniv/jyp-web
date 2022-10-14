@@ -1,6 +1,14 @@
-@extends('header')
+<html lang="zxx" class="js">
 
-@section('login')
+<head>
+    <link rel="shortcut icon" href="" />
+    <!-- Page Title  -->
+    <title>JYP Trucking | Login </title>
+    <!-- StyleSheets  -->
+    <link as="style" rel="preload stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.0.3') }}">
+    <link as="style" rel="preload stylesheet" href="{{ asset('assets/css/theme.css?ver=3.0.3') }}">
+</head>
+
 <body class="nk-body bg-white npc-default pg-auth">
     <div class="nk-app-root">
         <!-- main @s -->
@@ -53,8 +61,7 @@
         </div>
         <!-- main @e -->
     </div>
-
-@endsection
+</body>
 
 
 

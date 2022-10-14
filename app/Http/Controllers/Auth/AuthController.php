@@ -34,15 +34,6 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function driver()
-    {
-        return view('drivers');
-    }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
     public function postLogin(Request $request)
     {
         $request->validate([
