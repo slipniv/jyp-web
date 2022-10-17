@@ -9,6 +9,7 @@ class Drivers extends Model
 {
     protected $connection = 'mysql';
     protected $table = 'driver';
+    protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
         'name',

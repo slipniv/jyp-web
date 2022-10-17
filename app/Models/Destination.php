@@ -9,6 +9,7 @@ class Destination extends Model
 {
     protected $connection = 'mysql';
     protected $table = 'destination';
+    protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
         'area'

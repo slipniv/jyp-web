@@ -53,4 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('addDriver', [DriversController::class, 'add']);
     Route::post('updateDriver/{id}', [DriversController::class, 'update'])->name('updateDriver');
     Route::post('deleteDriver/{id}', [DriversController::class, 'delete'])->name('deleteDriver');
+    Route::post('addSchedule', [ScheduleController::class, 'add']);
+    Route::post('updateSchedule/{id}', [ScheduleController::class, 'update'])->name('updateSchedule');
+    Route::post('deleteSchedule/{id}', [ScheduleController::class, 'delete'])->name('deleteSchedule');
 });
