@@ -14,7 +14,8 @@ class Drivers extends Model
         'id',
         'name',
         'platenumber',
-        'contact'
+        'contact',
+        'color'
     );
 
 }

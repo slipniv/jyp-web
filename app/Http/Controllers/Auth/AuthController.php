@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
 use Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 
@@ -42,9 +43,13 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')->withSuccess('You have Successfully loggedin');
+            
+            return redirect()->intended('dashboard');
         }
-        return redirect("auth")->withSuccess('Oppes! You have entered invalid credentials');
+
+        
+        
+        return redirect("login");
     }    
     /**
      * Write code on Method
@@ -59,10 +64,12 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
+        Alert::success('Success','');
+
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        // return redirect("login");
     }   
     /**
      * Write code on Method

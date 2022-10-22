@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Drivers;
-  
+
 class DriversController extends Controller
 {
     public function index()
@@ -18,6 +18,7 @@ class DriversController extends Controller
         $newd->name = $request->input('name');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
+        $newd->color = $request->input('color');
         $newd->save();
         return redirect('drivers');
 
@@ -29,6 +30,7 @@ class DriversController extends Controller
         $newd->name = $request->input('name');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
+        $newd->color = $request->input('color');
         $newd->save();
         return redirect('drivers');
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Destination;
-  
+
 class ScheduleController extends Controller
 {
     public function index()
@@ -21,6 +21,7 @@ class ScheduleController extends Controller
         $news->destination_id = $request->input('DestinationLoc');
         $news->date = $request->input('date');
         $news->time = $request->input('time');
+        $news->status = $request->input('status');
         $news->save();
         return redirect('schedule');
 
@@ -33,6 +34,7 @@ class ScheduleController extends Controller
         $news->destination_id = $request->input('DestinationLoc');
         $news->date = $request->input('date');
         $news->time = $request->input('time');
+        $news->status = $request->input('status');
         $news->save();
         return redirect('schedule');
 

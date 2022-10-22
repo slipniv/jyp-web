@@ -11,100 +11,66 @@
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>
-        <div class="nk-block">
-            <div class="card card-bordered card-stretch">
-                <div class="card-inner-group">
-                    <div class="card-inner position-relative card-tools-toggle">
-                        <div class="card-title-group">
-                            <div class="card-tools me-n1">
-                                <ul class="btn-toolbar gx-1">
-                                    <li>
-                                        <a href="#" class="btn btn-icon search-toggle toggle-search" data-target="search"><em class="icon ni ni-search"></em></a>
-                                    </li><!-- li -->
-                                </ul><!-- .btn-toolbar -->
-                            </div><!-- .card-tools -->
-                        </div><!-- .card-title-group -->
-                        <div class="card-search search-wrap" data-search="search">
-                            <div class="card-body">
-                                <div class="search-content">
-                                    <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                    <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search by user or email">
-                                </div>
-                            </div>
-                        </div><!-- .card-search -->
-                    </div><!-- .card-inner -->
-                    <div class="card-inner p-0">
-                        <div class="nk-tb-list nk-tb-ulist">
-                            <div class="nk-tb-item nk-tb-head">
-                                <div class="nk-tb-col tb-col-mb"><span class="tb-lead">ID</span></div>
-                                <div class="nk-tb-col tb-col-mb"><span class="tb-lead">Plate Number</span></div>
-                                <div class="nk-tb-col tb-col-mb"><span class="tb-lead">Name</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="tb-lead">Destination</span></div>
-                                <div class="nk-tb-col tb-col-lg"><span class="tb-lead">Schedule Time</span></div>
-                                <div class="nk-tb-col tb-col-lg"><span class="tb-lead">&nbsp;&nbsp;&nbsp;Schedule Date</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="tb-lead">Status</span></div>
-                                <div class="nk-tb-col tb-col-md"><span class="tb-leada">Action</span></div>
-                            </div>
-                            @foreach ($disp as $dis)
-                            <!-- .nk-tb-item -->
-                            <div class="nk-tb-item">
-                                <div class="nk-tb-col tb-col-mb">
-                                    <span class="sub-text">{{ $dis->id }}</span>
-                                </div>
-                                <div class="nk-tb-col">
-                                    <span class="sub-text">{{ $dis->driver? $dis->driver->platenumber: ''}}</span>   
-                                </div>
-                                <div class="nk-tb-col tb-col-mb">
-                                    <span class="sub-text">{{ $dis->driver? $dis->driver->name: '' }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-md">
-                                    <span class="sub-text">{{ $dis->destination? $dis->destination->area: '' }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-lg">
-                                    <span class="sub-text"> &nbsp; &nbsp;{{ date('h:i A',strtotime($dis->time)) }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-lg">
-                                    <span class="sub-text">{{ date('F j, Y',strtotime($dis->date)) }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-md">
-                                    <span class="tb-status text-success"></span>
-                                </div>
-                                <div class="nk-tb-col nk-tb-col-tools">
-                                    <ul class="nk-tb-actions gx-1">
-                                        <li class="nk-tb-action-hidden">
-                                            <a href="#" class="btn btn-trigger btn-icon md-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Message">
-                                                <em class="icon ni ni-mail-fill"></em>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a data-bs-toggle="modal"
-                                                            href="#editSchedule-{{ $dis->id }}"><em class="icon ni ni-focus"></em><span>Edit</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <form id="delete-schedule-{{ $dis->id }}" action="{{ route('deleteSchedule', ['id' => $dis->id]) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <a href="javascript:$('#delete-schedule-{{ $dis->id }}').submit();"><em class="icon ni ni-na"></em><span>Remove User</span></a>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div><!-- .nk-tb-item -->
-                            @endforeach
-                        </div><!-- .nk-tb-list -->
-                    </div><!-- .card-inner -->
-                </div><!-- .card-inner-group -->
-            </div><!-- .card -->
-        </div><!-- .nk-block -->
+
+        <div class="table-responsive">
+            <table id="schedule_data" class="table table-striped table bordered">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Plate Number</td>
+                        <td>Name</td>
+                        <td>Destination</td>
+                        <td>Schedule Time</td>
+                        <td>Schedule Date</td>
+                        <td class="center">Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($disp as $dis)
+                        <tr>
+                            <td>{{ $dis->id }}</td>
+                            <td>{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
+                            <td>{{ $dis->driver? $dis->driver->name: '' }}</td>
+                            <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
+                            <td>{{ date('h:i A',strtotime($dis->time)) }}</td>
+                            <td>{{ date('F j, Y',strtotime($dis->date)) }}</td>
+                            <td class="center">
+                                <?php
+                                if($dis->status == 1){
+                                  ?>
+                                  <label class="badge badge-sm badge-dim bg-outline-success d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Completed</label>
+                                  <?php
+                                }elseif($dis->status == 3){
+                                  ?>
+                                  <label class="badge badge-sm badge-dim bg-outline-info d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Ongoing</label>
+                                  <?php
+                                }else{
+                                  ?>
+                                  <label class="badge badge-sm badge-dim bg-outline-danger d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Pending</label>
+                                  <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <?php
+
+            date_default_timezone_set('Asia/Manila');
+
+            $date = date('Y-m-d');
+
+        ?>
+
+
+
 
         <!-- modal @s -->
         <div class="modal fade" id="addEventPopup">
@@ -154,19 +120,28 @@
                                         <div class="row gx-2">
                                             <div class="w-55">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-left">
-                                                        <em class="icon ni ni-calendar"></em>
-                                                    </div>
-                                                    <input type="date" id="date" name="date" class="form-control date-picker" data-date-format="yyyy-mm-dd" required>
+                                                    <input type="date" id="date" name="date" class="form-control" min="<?=$date?>" data-date-format="yyyy-mm-dd" required>
                                                 </div>
                                             </div>
                                             <div class="w-45">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-left">
-                                                        <em class="icon ni ni-clock"></em>
-                                                    </div>
                                                     <input type="TIME" id="time" name="time" class="form-control">
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="status">Status</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option disabled selected>Select Status</option>
+                                                    <option value="2">Pending</option>
+                                                    <option value="1">Completed</option>
+                                                    <option value="3">Ongoing</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -175,9 +150,6 @@
                                     <ul class="d-flex justify-content-between gx-4 mt-1">
                                         <li>
                                             <button id="addSchedule" type="submit" class="btn btn-primary">Add Schedule</button>
-                                        </li>
-                                        <li>
-                                            <button id="resetEvent" data-bs-dismiss="modal" class="btn btn-danger btn-dim">Discard</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -189,7 +161,6 @@
         </div> <!-- modal @e -->
 
         <!-- modal @s -->
-
         @foreach($disp as $es)
         <div class="modal fade" id="editSchedule-{{ $es->id }}" >
             <div class="modal-dialog modal-md" role="document">
@@ -238,19 +209,37 @@
                                         <div class="row gx-2">
                                             <div class="w-55">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-left">
-                                                        <em class="icon ni ni-calendar"></em>
-                                                    </div>
-                                                    <input value="{{ $es->date }}" type="date" id="date" name="date" class="form-control date-picker" data-date-format="yyyy-mm-dd" required>
+                                                    <input value="{{ $es->date }}" type="date" id="date" name="date" min="<?=$date?>" class="form-control" data-date-format="yyyy-mm-dd" required>
                                                 </div>
                                             </div>
                                             <div class="w-45">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-left">
-                                                        <em class="icon ni ni-clock"></em>
-                                                    </div>
                                                     <input value="{{ $es->time }}" type="time" id="time" name="time" class="form-control" required>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="status">Status</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="{{ $es->status }}" selected>
+                                                        <?php
+                                                        if($es->status == "1"){
+                                                          echo "Completed";
+                                                        }elseif($es->status == "3"){
+                                                          echo "Ongoing";
+                                                        }else{
+                                                          echo "Pending";
+                                                        }
+                                                        ?>
+                                                    <option value="1">Completed</option>
+                                                    <option value="2">Pending</option>
+                                                    <option value="3">Ongoing</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -272,4 +261,19 @@
             </div>
         </div> <!-- modal @e -->
         @endforeach
+
+
+
+        <script >
+
+            $(document).ready(function() {
+                $('#schedule_data').DataTable();
+
+                // $('#date').datepicker({
+                //     minDate: new Date();
+                // })
+            });
+        </script>
+
+
 @endsection

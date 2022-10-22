@@ -88,5 +88,8 @@
         </div>
         <!-- main @e -->
     </div>
+
+    @include('sweetalert::alert')
+
 </body>
 

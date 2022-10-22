@@ -12,88 +12,32 @@
             </div><!-- .nk-block-head-content -->
         </div>
     </div>
-    <div class="nk-block">
-        <div class="card card-bordered card-stretch">
-            <div class="card-inner-group">
-                <div class="card-inner position-relative card-tools-toggle">
-                    <div class="card-title-group">
-                        <div class="card-tools me-n1">
-                            <ul class="btn-toolbar gx-1">
-                                <li>
-                                    <a href="#" class="btn btn-icon search-toggle toggle-search"
-                                        data-target="search"><em class="icon ni ni-search"></em></a>
-                                </li><!-- li -->
-                            </ul><!-- .btn-toolbar -->
-                        </div><!-- .card-tools -->
-                    </div><!-- .card-title-group -->
-                    <div class="card-search search-wrap" data-search="search">
-                        <div class="card-body">
-                            <div class="search-content">
-                                <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em
-                                        class="icon ni ni-arrow-left"></em></a>
-                                <input type="text" class="form-control border-transparent form-focus-none"
-                                    placeholder="Search by user or email">
-                            </div>
-                        </div>
-                    </div><!-- .card-search -->
-                </div><!-- .card-inner -->
-                <div class="card-inner p-0">
-                    <div class="nk-tb-list nk-tb-ulist">
-                        <div class="nk-tb-item nk-tb-head">
-                            <div class="nk-tb-col tb-col-mb"><span class="tb-lead">ID</span></div>
-                            <div class="nk-tb-col tb-col-mb"><span class="tb-lead">Plate Number</span></div>
-                            <div class="nk-tb-col tb-col-mb"><span class="tb-lead">Name</span></div>
-                            <div class="nk-tb-col tb-col-md"><span class="tb-lead">Contact Number</span></div>
-                            <div class="nk-tb-col tb-col-md"><span class="tb-lead">Action</span></div>
-                        </div>
-
-
-                        @foreach ($drivers_arr as $dis)
-                            <!-- .nk-tb-item -->
-                            <div class="nk-tb-item">
-                                <div class="nk-tb-col tb-col-mb">
-                                    <span class="sub-text">{{ $dis->id }}</span>
-                                </div>
-                                <div class="nk-tb-col">
-                                    <span class="sub-text">{{ $dis->platenumber }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-mb">
-                                    <span class="sub-text">{{ $dis->name }}</span>
-                                </div>
-                                <div class="nk-tb-col tb-col-md">
-                                    <span class="sub-text">{{ $dis->contact }}</span>
-                                </div>
-                                <div class="nk-tb-col nk-tb-col-tools">
-                                    <ul class="nk-tb-actions gx-1">
-                                        <li>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                    data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a data-bs-toggle="modal"
-                                                                href="#editDrivers-{{ $dis->id }}"><em
-                                                                    class="icon ni ni-focus"></em><span>Edit</span></a></li>
-                                                        <li>
-                                                            <form id="delete-driver-{{ $dis->id }}" action="{{ route('deleteDriver', ['id' => $dis->id]) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <a href="javascript:$('#delete-driver-{{ $dis->id }}').submit();"><em class="icon ni ni-na"></em><span>Remove User</span></a>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div><!-- .nk-tb-item -->
-                        @endforeach
-                    </div><!-- .nk-tb-list -->
-                </div><!-- .card-inner -->
-            </div><!-- .card-inner-group -->
-        </div><!-- .card -->
-    </div><!-- .nk-block -->
+        <div class="table-responsive">
+            <table id="schedule_data" class="table table-striped table bordered">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Plate Number</td>
+                        <td>Name</td>
+                        <td>Contact Number</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($drivers_arr as $dis)
+                        <tr>
+                            <td>{{ $dis->id }}</td>
+                            <td>{{ $dis->platenumber }}</td>
+                            <td>{{ $dis->name }}</td>
+                            <td>{{ $dis->contact }}</td>
+                            <td>
+                                <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
     <!-- modal @s -->
     <div class="modal fade" id="addEventPopup">
@@ -135,14 +79,26 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="color">Color</label>
+                                    <div class="form-control-wrap">
+                                        <div class="form-control-select">
+                                            <select class="form-control" id="color" name="color">
+                                                <option disabled selected>select one option</option>
+                                                <option style="background-color:#eb3434" value="1">Red</option>
+                                                <option style="background-color:#34eb89" value="2">Green</option>
+                                                <option style="background-color:#3471eb" value="3">Blue</option>
+                                                <option style="background-color:#dceb34" value="4">Yellow</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <ul class="d-flex justify-content-between gx-4 mt-1">
                                     <li>
                                         <button id="addDriver" type="submit" class="btn btn-primary">Add Driver</button>
-                                    </li>
-                                    <li>
-                                        <button id="#" data-bs-dismiss="modal"
-                                            class="btn btn-danger btn-dim">Discard</button>
                                     </li>
                                 </ul>
                             </div>
@@ -159,7 +115,7 @@
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Schedule</h5>
+                            <h5 class="modal-title">Edit Schedule</h5>
                             <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <em class="icon ni ni-cross"></em>
                             </a>
@@ -195,6 +151,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="color">Color</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-control" id="color" name="color" readonly>
+                                                    <option value="{{ $ed->color }}" selected>
+                                                        <?php
+                                                        if($ed->color == "1"){
+                                                          echo "Red";
+                                                        }elseif($ed->color == "2"){
+                                                          echo "Green";
+                                                        }elseif($ed->color == "3"){
+                                                          echo "Blue";
+                                                        }elseif($ed->color == "4"){
+                                                          echo "Yellow";
+                                                        }
+                                                        ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2 mt-4">
                                             <li>
@@ -212,6 +189,13 @@
                 </div>
             </div> <!-- modal @e -->
         @endforeach
+
+        <script >
+
+            $(document).ready(function() {
+                $('#schedule_data').DataTable();
+            });
+        </script>
 
 
     @endsection
