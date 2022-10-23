@@ -137,7 +137,6 @@
                                         <div class="form-control-wrap ">
                                             <div class="form-control-select">
                                                 <select class="form-control" id="status" name="status">
-                                                    <option disabled selected>Select Status</option>
                                                     <option value="2">Pending</option>
                                                     <option value="1">Completed</option>
                                                     <option value="3">Ongoing</option>

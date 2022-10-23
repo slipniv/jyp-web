@@ -1,7 +1,7 @@
 <html lang="zxx" class="js">
 
 <head>
-    <link rel="shortcut icon" href="" />
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('images/logo2.jpg') }}" />
     <!-- Page Title  -->
     <title>JYP Trucking | Login </title>
     <!-- StyleSheets  -->
