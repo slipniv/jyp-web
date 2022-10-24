@@ -1,7 +1,7 @@
 <html lang="zxx" class="js">
 
 <head>
-    <link rel="shortcut icon" href="" />
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('images/logo2.jpg') }}" />
     <!-- Page Title  -->
     <title>JYP Trucking | Login </title>
     <!-- StyleSheets  -->
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
                 <!-- wrap @e -->
             </div>
@@ -61,7 +61,9 @@
         </div>
         <!-- main @e -->
     </div>
-    
+
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
 </body>
 
 

@@ -1,7 +1,7 @@
 <html lang="zxx" class="js">
 
 <head>
-    <link rel="shortcut icon" href="" />
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('images/logo2.jpg') }}" />
     <!-- Page Title  -->
     <title>JYP Trucking | Login </title>
     <!-- StyleSheets  -->
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <center><label class="form-label" for="name">Name</label></center>
                                         <div class="form-control-wrap">
-                                            
+
                                             <center><input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Enter your name"></center>
                                             @if ($errors->has('name'))
 
@@ -45,7 +45,7 @@
                                     <div class="form-group">
                                         <center><label class="form-label" for="email">Email</label></center>
                                         <div class="form-control-wrap">
-                                            
+
                                             <center><input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email address"></center>
                                             @if ($errors->has('email'))
 
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
                 <!-- wrap @e -->
             </div>

@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.login');
-    }  
+    }
     /**
      * Write code on Method
      *
@@ -43,34 +43,36 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            
+
             return redirect()->intended('dashboard');
         }
 
-        
-        
+        Alert::error('Invalid Email/Password', 'Please try again.');
+
         return redirect("login");
-    }    
+
+
+    }
     /**
      * Write code on Method
      *
      * @return response()
      */
     public function postRegistration(Request $request)
-    {  
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|min:1',
         ]);
 
-        Alert::success('Success','');
+        Alert::success('Account Created!','Please Login.');
 
         $data = $request->all();
         $check = $this->create($data);
 
-        // return redirect("login");
-    }   
+        return redirect("login");
+    }
     /**
      * Write code on Method
      *
@@ -92,7 +94,7 @@ class AuthController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
-    }  
+    }
     /**
      * Write code on Method
      *

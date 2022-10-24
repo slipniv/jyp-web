@@ -22,26 +22,29 @@
                             <span class="nk-menu-text">Driver Details</span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="{{ route('schedule') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                            <span class="nk-menu-text">Schedule</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle" data-bs-original-title="" title="">
-                            <span class="nk-menu-icon"><em class="icon ni ni-reports"></em></span>
-                            <span class="nk-menu-text">Reports</span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-text">Schedules</span>
                         </a>
                         <ul class="nk-menu-sub" style="display: none;">
                             <li class="nk-menu-item">
-                                <a href="html/hotel/report-stocks.html" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">To be Scheduled</span></a>
+                                <a href="{{ route('schedule') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Schedule</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/hotel/report-expenses.html" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Ongoing Deliveries</span></a>
+                                <a href="{{ route('ongoing') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Ongoing Deliveries</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="#" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Completed Deliveries</span></a>
                             </li>
                         </ul>
                     </li><!-- .nk-menu-Dropdown -->
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-reports"></em></span>
+                            <span class="nk-menu-text">Reports</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="{{ route('history') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-dot-box"></em></span>

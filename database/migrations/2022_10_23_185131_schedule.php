@@ -8,10 +8,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('location', function (Blueprint $table) {
+        Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->date('date');
+            $table->time('time');
+            $table->integer('driver_id');
+            $table->integer('destination_id');
+            $table->integer('status');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location');
+        Schema::dropIfExists('schedule');
     }
 };

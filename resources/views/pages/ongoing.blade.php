@@ -4,10 +4,7 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Schedule</h3>
-                </div><!-- .nk-block-head-content -->
-                <div class="nk-block-head-content">
-                    <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Schedule</span></a>
+                    <h3 class="nk-block-title page-title">On-going Deliveries</h3>
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>
@@ -55,9 +52,6 @@
 
                                 <td>
                                     <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                    {{-- <form action="{{ route('deleteSchedule', $dis->id) }}" method="POST"> --}}
-                                    <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button>
-                                    {{-- </form> --}}
                                     <a class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href=""></a>
                                 </td>
                         </tr>
@@ -260,28 +254,34 @@
 
             $(document).ready(function() {
                 $('#schedule_data').DataTable();
-                $('body').on('click','#delete-schedule', function () {
-                    var driverId = $(this).attr('data-driver');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        },
-                    })
-                    let ajaxData = {
-                        url: "<?php echo url("/"); ?>" + "/deleteSchedule/" + driverId,
-                        type: 'POST',
-                        async: false,
-                        success: function (e) {
-                            window.location.reload();
-                        },
-                        error: function (e) {
-                            // Show popup confirmation
-                            console.error(e)
-                        },
-                    }
 
-                    $.ajax(ajaxData)
-                });
+
+
+                // <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button>
+                // --- delete ---
+
+                // $('body').on('click','#delete-schedule', function () {
+                //     var driverId = $(this).attr('data-driver');
+                //     $.ajaxSetup({
+                //         headers: {
+                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                //         },
+                //     })
+                //     let ajaxData = {
+                //         url: "<?php echo url("/"); ?>" + "/deleteSchedule/" + driverId,
+                //         type: 'POST',
+                //         async: false,
+                //         success: function (e) {
+                //             window.location.reload();
+                //         },
+                //         error: function (e) {
+                //             // Show popup confirmation
+                //             console.error(e)
+                //         },
+                //     }
+
+                //     $.ajax(ajaxData)
+                // });
             });
         </script>
 

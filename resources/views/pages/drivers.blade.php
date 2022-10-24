@@ -13,7 +13,7 @@
         </div>
     </div>
         <div class="table-responsive">
-            <table id="schedule_data" class="table table-striped table bordered">
+            <table id="schedule_data" class="table table-striped">
                 <thead>
                     <tr>
                         <td>ID</td>
