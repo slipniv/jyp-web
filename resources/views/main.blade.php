@@ -3,7 +3,7 @@
 <head>
     <link rel="shortcut icon" type="image/jpg" href="{{ asset('images/logo2.jpg') }}" />
     <!-- Page Title  -->
-    <title>JYP Trucking | Login </title>
+    <title>JYP Trucking Tracking Services </title>
     <!-- StyleSheets  -->
     <link as="style" rel="preload stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.0.3') }}">
     <link as="style" rel="preload stylesheet" href="{{ asset('assets/css/theme.css?ver=3.0.3') }}">
@@ -20,6 +20,8 @@
      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
      crossorigin=""></script>
      <meta name="csrf-token" content="{{csrf_token()}}">
+
+     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar">

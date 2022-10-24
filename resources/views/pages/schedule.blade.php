@@ -22,8 +22,8 @@
                         <td>Destination</td>
                         <td>Schedule Time</td>
                         <td>Schedule Date</td>
-                        <td class="center">Status</td>
-                        <td>Action</td>
+                        <td><center>Status</center></td>
+                        <td><center>Action</center></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $dis->id }}</td>
                             <td>{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
-                            <td>{{ $dis->driver? $dis->driver->name: '' }}</td>
+                            <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->mname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('h:i A',strtotime($dis->time)) }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->date)) }}</td>
@@ -54,10 +54,9 @@
                             </td>
 
                                 <td>
-                                    <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                    {{-- <form action="{{ route('deleteSchedule', $dis->id) }}" method="POST"> --}}
-                                    <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button>
-                                    {{-- </form> --}}
+                                    <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
+                                    <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
+                                    {{-- <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button> --}}
                                     <a class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href=""></a>
                                 </td>
                         </tr>
@@ -98,7 +97,7 @@
                                             <div class="form-control-select">
                                                 <select class="form-control" id="Drivername" name="Drivername">
                                                     @foreach ($sched_arr as $ad)
-                                                    <option value="{{ $ad->id }}">{{ $ad->name }}</option>
+                                                    <option value="{{ $ad->id }}">{{ $ad->fname }} {{ $ad->mname }} {{ $ad->lname }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -140,13 +139,11 @@
                                     <div class="form-group">
                                         <label class="form-label" for="status">Status</label>
                                         <div class="form-control-wrap ">
-                                            <div class="form-control-select">
                                                 <select class="form-control" id="status" name="status">
                                                     <option value="2">Pending</option>
-                                                    <option value="1">Completed</option>
-                                                    <option value="3">Ongoing</option>
+                                                    {{-- <option value="1">Completed</option>
+                                                    <option value="3">Ongoing</option> --}}
                                                 </select>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +183,7 @@
                                             <div class="form-control-select">
                                                 <select class="form-control" id="Drivername" name="Drivername">
                                                     @foreach ($sched_arr as $ad)
-                                                    <option value="{{ $ad->id }}" {{ $es->driver_id ==  $ad->id? "selected": "" }}>{{ $ad->name }}</option>
+                                                    <option value="{{ $ad->id }}" {{ $es->driver_id ==  $ad->id? "selected": "" }}>{{ $ad->fname }} {{ $ad->mname }} {{ $ad->lname }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -229,7 +226,6 @@
                                         <label for="status" class="form-label">Status</label>
                                         <div class="form-control-wrap ">
                                             <select name="status" id="status" class="custom-select select">
-                                            <option value="1" <?php echo isset($es->status) && $es->status == 1 ? 'selected' : '' ?>>Completed</option>
                                             <option value="2" <?php echo isset($es->status) && $es->status == 2 ? 'selected' : '' ?>>Pending</option>
                                             <option value="3" <?php echo isset($es->status) && $es->status == 3 ? 'selected' : '' ?>>Ongoing</option>
                                             </select>
@@ -248,6 +244,97 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- modal @e -->
+        @endforeach
+
+
+        <!-- modal @s -->
+        @foreach($disp as $es)
+        <div class="modal fade" id="viewSchedule-{{ $es->id }}" >
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">View Schedule</h5>
+                        <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <em class="icon ni ni-cross"></em>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                            <div class="row gx-4 gy-3">
+                                <div class="col-4">
+                                    <label class="form-label">Plate Number</label>
+                                    <select class="form-control" style="text-transform:uppercase" disabled>
+                                        @foreach ($sched_arr as $ad)
+                                        <option value="{{ $ad->id }}" {{ $es->driver_id ==  $ad->id? "selected": "" }}>{{ $ad->platenumber }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <div class="form-control-wrap ">
+                                                <select class="form-control" disabled>
+                                                    @foreach ($sched_arr as $ad)
+                                                    <option value="{{ $ad->id }}" {{ $es->driver_id ==  $ad->id? "selected": "" }}>{{ $ad->fname }} {{ $ad->mname }} {{ $ad->lname }}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Destination</label>
+                                        <div class="form-control-wrap ">
+                                                <select class="form-control" disabled>
+                                                    @foreach ($area as $dd)
+                                                    <option value="{{ $dd->id }}" {{ $es->destination_id ==  $dd->id? "selected": "" }}>{{ $dd->area }}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Schedule Date</label>
+                                        <div class="form-control-wrap ">
+                                            <input value="{{ date('F j, Y',strtotime($es->date)) }}"  class="form-control"  disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Schedule Time</label>
+                                        <div class="form-control-wrap ">
+                                            <input value="{{ date('h:i A',strtotime($es->time)) }}" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="status" class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</label>
+                                        <div class="form-control-wrap ">
+                                            <?php
+                                            if($dis->status == 1){
+                                            ?>
+                                            <label class="badge badge-sm badge-dim bg-outline-success d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Completed</label>
+                                            <?php
+                                            }elseif($dis->status == 3){
+                                            ?>
+                                            <label class="badge badge-sm badge-dim bg-outline-info d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Ongoing</label>
+                                            <?php
+                                            }else{
+                                            ?>
+                                            <label class="badge badge-sm badge-dim bg-outline-danger d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Pending</label>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

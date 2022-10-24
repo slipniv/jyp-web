@@ -4,11 +4,10 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Drivers</h3>
+                <h3 class="nk-block-title page-title">Destination List</h3>
             </div><!-- .nk-block-head-content -->
             <div class="nk-block-head-content">
-                <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em
-                        class="icon ni ni-plus"></em><span>Add Driver</span></a>
+                <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Destination</span></a>
             </div><!-- .nk-block-head-content -->
         </div>
     </div>
@@ -27,8 +26,8 @@
                     @foreach ($drivers_arr as $dis)
                         <tr>
                             <td>{{ $dis->id }}</td>
-                            <td style="text-transform:uppercase">{{ $dis->platenumber }}</td>
-                            <td>{{ $dis->fname }} {{ $dis->mname }} {{ $dis->lname }}</td>
+                            <td>{{ $dis->platenumber }}</td>
+                            <td>{{ $dis->name }}</td>
                             <td>{{ $dis->contact }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
@@ -53,27 +52,11 @@
                     <form action="addDriver" id="addEventForm" method="POST" class="form-validate is-alter">
                         @csrf
                         <div class="row gx-4 gy-3">
-                            <div class="col-4">
+                            <div class="col-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="fname">First Name</label>
+                                    <label class="form-label" for="name">Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="fname" name="fname" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label class="form-label" for="mname">Middle Name</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="mname" name="mname" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label class="form-label" for="lname">Last Name</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="lname" name="lname" required>
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +64,8 @@
                                 <div class="form-group">
                                     <label class="form-label" for="platenumber">Plate Number</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="platenumber" name="platenumber" size="20" maxlength="20" style="text-transform:uppercase" required>
+                                        <input type="text" class="form-control" id="platenumber" name="platenumber"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +73,8 @@
                                 <div class="form-group">
                                     <label class="form-label" for="contact">Contact Number</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="contact" name="contact" minlength="11" maxlength="11" required>
+                                        <input type="text" class="form-control" id="contact" name="contact"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -138,27 +123,12 @@
                             <form action="{{ route('updateDriver', ['id' => $ed->id]) }}" id="addEventForm" method="POST" class="form-validate is-alter">
                                 @csrf
                                 <div class="row gx-4 gy-3">
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="fname">First Name</label>
+                                            <label class="form-label" for="name">Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fname" name="fname" value="{{ $ed->fname }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label class="form-label" for="mname">Middle Name</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="mname" name="mname" value="{{ $ed->mname }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label class="form-label" for="lname">Last Name</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="lname" name="lname" value="{{ $ed->lname }}">
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    value="{{ $ed->name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +137,7 @@
                                             <label class="form-label" for="platenumber">Plate Number</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="platenumber"
-                                                    name="platenumber" style="text-transform:uppercase" value="{{ $ed->platenumber }}">
+                                                    name="platenumber" value="{{ $ed->platenumber }}">
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +146,7 @@
                                             <label class="form-label" for="contact">Contact Number</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="contact" name="contact"
-                                                    value="{{ $ed->contact }}" minlength="11" maxlength="11">
+                                                    value="{{ $ed->contact }}">
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +154,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="color">Color</label>
                                             <div class="form-control-wrap">
-                                                <select class="form-control" id="color" name="color" disabled readonly>
+                                                <select class="form-control" id="color" name="color" readonly>
                                                     <option value="{{ $ed->color }}" selected>
                                                         <?php
                                                         if($ed->color == "1"){

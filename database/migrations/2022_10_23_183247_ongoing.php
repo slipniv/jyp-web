@@ -10,9 +10,11 @@ return new class extends Migration
     {
         Schema::create('ongoing', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('driver_id');
+            $table->integer('destination_id');
+            $table->integer('status_id');
+            $table->date('startingDate');
             $table->date('arrivalDate');
-            $table->string('remarks');
             $table->rememberToken();
             $table->timestamps();
         });

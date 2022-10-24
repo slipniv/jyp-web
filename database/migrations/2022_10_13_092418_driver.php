@@ -10,9 +10,12 @@ return new class extends Migration
     {
         Schema::create('driver', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('mname');
             $table->string('platenumber')->unique();
-            $table->string('contact');
+            $table->string('contact')->unique();
+            $table->string('color')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

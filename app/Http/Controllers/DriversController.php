@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Drivers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DriversController extends Controller
 {
@@ -15,11 +16,16 @@ class DriversController extends Controller
     public function add(Request $request){
 
         $newd = new Drivers();
-        $newd->name = $request->input('name');
+        $newd->fname = $request->input('fname');
+        $newd->lname = $request->input('lname');
+        $newd->mname = $request->input('mname');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
         $newd->color = $request->input('color');
         $newd->save();
+
+        Alert::success('Driver added Successfully!');
+
         return redirect('drivers');
 
     }
@@ -27,7 +33,9 @@ class DriversController extends Controller
     public function update(Request $request, $id){
 
         $newd = Drivers::findOrFail($id);
-        $newd->name = $request->input('name');
+        $newd->fname = $request->input('fname');
+        $newd->lname = $request->input('lname');
+        $newd->mname = $request->input('mname');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
         $newd->color = $request->input('color');

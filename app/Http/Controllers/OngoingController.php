@@ -7,11 +7,11 @@ use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Destination;
 use App\Models\Ongoing;
-  
-class DashboardController extends Controller
+
+class OngoingController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard')->with(['driv' => Drivers::count(), 'on' => Ongoing::count(), 'pen' => Schedule::count()]);
+        return view('pages.ongoing')->with(['sched_arr' => Drivers::all(), 'disp' => Ongoing::query()->with('driver')->with('destination')->where('status_id', 3)->get(), 'area' => Destination::all()]);
     }
 }

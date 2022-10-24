@@ -251,6 +251,7 @@ blockquote {
 b,
 strong {
   font-weight: bolder;
+  font-size: 40px;
 }
 
 small, .small {
@@ -28526,6 +28527,13 @@ body.nav-shown {
   overflow: auto;
   max-height: 100%;
   min-height: 100%;
+}
+.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+    border: 0;
+}
+.btn.btn-flex {
+    display: inline-flex;
+    align-items: center;
 }
 .nk-header-menu.mobile-menu {
   padding-top: 65px;

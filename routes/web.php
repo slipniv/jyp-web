@@ -12,6 +12,7 @@ use App\Http\Controllers\DriversController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\OngoingController;
 use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Location;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::get('history', [HistoryController::class, 'index'])->name('history');
     Route::get('location', [LocationController::class, 'index'])->name('location');
     Route::get('schedule', [ScheduleController::class, 'index'])->name('schedule');
+
+    Route::get('ongoing', [OngoingController::class, 'index'])->name('ongoing');
+
     Route::get('drivers', [DriversController::class, 'index'])->name('drivers');
     Route::post('addDriver', [DriversController::class, 'add']);
     Route::post('updateDriver/{id}', [DriversController::class, 'update'])->name('updateDriver');
@@ -56,5 +60,4 @@ Route::middleware('auth')->group(function () {
     Route::post('addSchedule', [ScheduleController::class, 'add']);
     Route::post('updateSchedule/{id}', [ScheduleController::class, 'update'])->name('updateSchedule');
     Route::post('deleteSchedule/{id}', [ScheduleController::class, 'delete'])->name('deleteSchedule');
-    Route::get('ongoing', [ScheduleController::class, 'index'])->name('ongoing');
 });

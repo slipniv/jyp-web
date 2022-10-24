@@ -74,7 +74,7 @@
                                             class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"><a>Register</a></button></center>
                                     </div>
                                 </form>
-                                <center><div class="form-note-s2 pt-4"> Already have an account ? <a href="{{ route('login')}}"><strong>Sign in instead</strong></a>
+                                <center><div class="form-note-s2 pt-4"> Already have an account? <a href="{{ route('login')}}">Sign in instead</a>
                                 </div></center>
                                 </div>
                             </div>
