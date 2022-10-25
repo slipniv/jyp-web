@@ -13,6 +13,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\OngoingController;
+use App\Http\Controllers\TrashController;
 use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Location;
@@ -53,10 +54,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('ongoing', [OngoingController::class, 'index'])->name('ongoing');
 
+    Route::get('archive', [TrashController::class, 'trash'])->name('trash');
+    Route::get('restoreDriver/{id}', [TrashController::class, 'restore'])->name('restoreDriver');
+    
     Route::get('drivers', [DriversController::class, 'index'])->name('drivers');
     Route::post('addDriver', [DriversController::class, 'add']);
     Route::post('updateDriver/{id}', [DriversController::class, 'update'])->name('updateDriver');
     Route::post('deleteDriver/{id}', [DriversController::class, 'delete'])->name('deleteDriver');
+    
     Route::post('addSchedule', [ScheduleController::class, 'add']);
     Route::post('updateSchedule/{id}', [ScheduleController::class, 'update'])->name('updateSchedule');
     Route::post('deleteSchedule/{id}', [ScheduleController::class, 'delete'])->name('deleteSchedule');

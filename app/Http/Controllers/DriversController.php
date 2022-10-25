@@ -44,8 +44,11 @@ class DriversController extends Controller
 
     }
 
-    public function delete(Request $request, $id){
-        Drivers::destroy($id);
+    public function delete($id){
+        $driver = Drivers::find($id);
+        if(!is_null($driver)){
+            $driver->delete();
+        }
 
         return redirect('drivers');
 

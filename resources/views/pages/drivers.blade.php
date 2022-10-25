@@ -40,6 +40,7 @@
                             <td>{{ $dis->contact }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
+                                <button type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Trash</button>
                             </td>
                         </tr>
                     @endforeach
@@ -231,6 +232,29 @@
 
             $(document).ready(function() {
                 $('#schedule_data').DataTable();
+
+                $('body').on('click','#delete-driver', function () {
+                    var driverId = $(this).attr('data-driver');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        },
+                    })
+                    let ajaxData = {
+                        url: "<?php echo url("/"); ?>" + "/deleteDriver/" + driverId,
+                        type: 'POST',
+                        async: false,
+                        success: function (e) {
+                            window.location.reload();
+                        },
+                        error: function (e) {
+                            // Show popup confirmation
+                            console.error(e)
+                        },
+                    }
+
+                    $.ajax(ajaxData)
+                });
             });
 
             function isNumber(evt)

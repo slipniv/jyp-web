@@ -27,7 +27,7 @@
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1">
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href=""><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
+                                    <li><a href="{{ route('trash') }}"><em class="icon ni ni-setting-alt"></em><span>Archived Datas</span></a></li>
                                 </ul>
                             </div>
                             <div class="dropdown-inner">
