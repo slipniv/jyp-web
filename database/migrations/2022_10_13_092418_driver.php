@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('mname');
             $table->string('platenumber')->unique();
             $table->string('contact')->unique();
-            $table->string('color')->unique();
+            $table->string('color');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,6 +1,14 @@
 @extends('main')
 
 @section('content')
+        <?php
+        foreach ($disp as $dis){
+            $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
+        }
+        
+        ?>
+
+
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
@@ -29,9 +37,10 @@
                 <tbody>
                     @foreach ($disp as $dis)
                         <tr>
+                            
                             <td>{{ $dis->id }}</td>
-                            <td>{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
-                            <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->mname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
+                            <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
+                            <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('h:i A',strtotime($dis->time)) }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->date)) }}</td>

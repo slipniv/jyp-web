@@ -1,6 +1,14 @@
 @extends('main')
 
 @section('content')
+        <?php
+        foreach ($drivers_arr as $dis){
+            $mname = Str::of($dis->mname)->limit(1,'.');
+        }
+
+        ?>
+
+
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
@@ -28,7 +36,7 @@
                         <tr>
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->platenumber }}</td>
-                            <td>{{ $dis->fname }} {{ $dis->mname }} {{ $dis->lname }}</td>
+                            <td>{{ $dis->fname }} <?= $mname ?> {{ $dis->lname }}</td>
                             <td>{{ $dis->contact }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
@@ -57,7 +65,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="fname">First Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="fname" name="fname" required>
+                                        <input type="text" class="form-control" id="inputTextBox" name="fname" required>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +73,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="mname">Middle Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="mname" name="mname" required>
+                                        <input type="text" class="form-control" id="inputTextBox" name="mname" required>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +81,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="lname">Last Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="lname" name="lname" required>
+                                        <input type="text" class="form-control" id="inputTextBox" name="lname" required>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +97,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="contact">Contact Number</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="contact" name="contact" minlength="11" maxlength="11" required>
+                                        <input type="text" onkeypress="return isNumber(event)" class="form-control" id="contact" name="contact" minlength="11" maxlength="11" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +150,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="fname">First Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fname" name="fname" value="{{ $ed->fname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="fname" value="{{ $ed->fname }}">
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +158,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="mname">Middle Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="mname" name="mname" value="{{ $ed->mname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="mname" value="{{ $ed->mname }}">
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +166,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="lname">Last Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="lname" name="lname" value="{{ $ed->lname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="lname" value="{{ $ed->lname }}">
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +183,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="contact">Contact Number</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="contact" name="contact"
+                                                <input type="text" onkeypress="return isNumber(event)" class="form-control" id="contact" name="contact"
                                                     value="{{ $ed->contact }}" minlength="11" maxlength="11">
                                             </div>
                                         </div>
@@ -223,6 +231,24 @@
 
             $(document).ready(function() {
                 $('#schedule_data').DataTable();
+            });
+
+            function isNumber(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+
+                return true;
+            }
+
+            $(document).on('keypress', '#inputTextBox', function (event) {
+                var regex = new RegExp("^[a-zA-Z ]+$");
+                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                if (!regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                }
             });
         </script>
 
