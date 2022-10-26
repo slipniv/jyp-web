@@ -35,7 +35,7 @@
                                 <a href="{{ route('ongoing') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Ongoing Deliveries</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Completed Deliveries</span></a>
+                                <a href="{{ route('completed') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Completed Deliveries</span></a>
                             </li>
                         </ul>
                     </li><!-- .nk-menu-Dropdown -->

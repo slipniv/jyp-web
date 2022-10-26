@@ -25,11 +25,6 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-inner card-inner-lg">
-                                        <div class="nk-block-head">
-                                            <div class="nk-block-head-content">
-                                                <center><h4 class="nk-block-title">Sign-In</h4></center>
-                                            </div>
-                                        </div>
                                         <form method="POST" action="{{ route('login.post') }}" autocomplete="on">
                                             @csrf
                                             <div class="form-group">

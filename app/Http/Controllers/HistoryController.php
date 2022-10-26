@@ -3,13 +3,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Models\Drivers;
+use App\Models\Destination;
+use App\Models\Ongoing;
+use App\Models\Completed;
 
 class HistoryController extends Controller
 {
     public function index()
     {
-        // Carbon::now()->addDays(3);
-        return view('pages.history');
+        return view('pages.history')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Completed::query()->with('ongoing')->with('driver')->with('destination')->get(), 'area' => Destination::all()]);
     }
 }

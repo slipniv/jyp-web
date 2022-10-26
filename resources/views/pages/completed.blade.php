@@ -3,7 +3,7 @@
 @section('content')
 
         <?php
-        foreach ($disp as $dis){
+        foreach ($ong as $dis){
             $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
         }
 
@@ -24,20 +24,18 @@
                         <td>ID</td>
                         <td>Name</td>
                         <td>Destination</td>
-                        <td>Schedule Date</td>
                         <td>Arrival Date</td>
                         <td><center>Status</center></td>
                         <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($disp as $dis)
+                    @foreach ($ong as $dis)
                         <tr>
                             <td>{{ $dis->id }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
-                            <td>{{ date('F j, Y',strtotime($dis->startingDate)) }}</td>
-                            <td>{{ date('F j, Y',strtotime($dis->arrivalDate)) }}</td>
+                            <td>{{ date('F j, Y',strtotime($dis->arrive)) }}</td>
                             <td class="center">
                                 <?php
                                 if($dis->status_id == 1){
@@ -55,11 +53,9 @@
                                 }
                                 ?>
                             </td>
-
-                                <td>
-                                    <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
-                                    <a data-bs-toggle="modal" href="#editSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
-                                </td>
+                            <td>
+                                <a data-bs-toggle="modal" href="#viewSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -75,103 +71,8 @@
         ?>
 
         <!-- modal @s -->
-        @foreach($disp as $es)
-        <div class="modal fade" id="editSched-{{ $es->id }}" >
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit Schedule</h5>
-                        <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <em class="icon ni ni-cross"></em>
-                        </a>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('updateSched', ['id' => $es->id]) }}" id="addEventForm" method="POST" class="form-validate is-alter">
-                            @csrf
-                            <div class="row gx-4 gy-3">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="Drivername">Name</label>
-                                        <div class="form-control-wrap ">
-                                                <select class="form-control" id="Drivername" name="Drivername" readonly>
-                                                    @foreach ($sched_arr as $ad)
-                                                    <option value="{{ $ad->id }}" {{ $es->driver_id ==  $ad->id? "selected": "" }}>{{ $ad->fname }} {{ $ad->mname }} {{ $ad->lname }}</option>
-                                                    @endforeach
-                                                </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="DestinationLoc">Destination</label>
-                                        <div class="form-control-wrap ">
-                                                <select class="form-control" id="DestinationLoc" name="DestinationLoc" readonly>
-                                                    @foreach ($area as $dd)
-                                                    <option value="{{ $dd->id }}" {{ $es->destination_id ==  $dd->id? "selected": "" }}>{{ $dd->area }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="form-label">Starting Date</label>
-                                        <div class="w-55">
-                                            <div class="form-control-wrap">
-                                                <input value="{{ $es->startingDate }}" type="date" id="dates" name="dates" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label class="form-label">Starting Date</label>
-                                        <div class="w-55">
-                                            <div class="form-control-wrap">
-                                                <input value="{{ $es->arrivalDate }}" type="date" id="datea" name="datea" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="status" class="form-label">Status</label>
-                                        <div class="form-control-wrap ">
-                                            <select name="status" id="status" class="custom-select select">
-                                            <option value="3" <?php echo isset($es->status_id) && $es->status_id == 3 ? 'selected' : '' ?>>Ongoing</option>
-                                            <option value="1" <?php echo isset($es->status_id) && $es->status_id == 1 ? 'selected' : '' ?>>Completed</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Remarks</label>
-                                        <div class="form-control-wrap ">
-                                            <textarea name="remark" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="d-flex justify-content-between gx-4 mt-1">
-                                        <li>
-                                            <button id="updateSched" type="submit" class="btn btn-primary">Update Schedule</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- modal @e -->
-        @endforeach
-
-
-        <!-- modal @s -->
-        @foreach($disp as $es)
-        <div class="modal fade" id="viewSchedule-{{ $es->id }}" >
+        @foreach($ong as $es)
+        <div class="modal fade" id="viewSched-{{ $es->id }}" >
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -190,7 +91,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-8">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
                                         <div class="form-control-wrap ">
@@ -216,17 +117,25 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="form-label">Schedule Date</label>
+                                        <label class="form-label">Arrival Date</label>
                                         <div class="form-control-wrap ">
-                                            <input value="{{ date('F j, Y',strtotime($es->startingDate)) }}"  class="form-control"  disabled>
+                                            <input value="{{ date('F j, Y',strtotime($es->arrive)) }}" class="form-control" disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="form-label">Arrival Date</label>
+                                        <label class="form-label">Arrival Time</label>
                                         <div class="form-control-wrap ">
-                                            <input value="{{ date('F j, Y',strtotime($es->arrivalDate)) }}" class="form-control" disabled>
+                                            <input value="{{ date('h:i A',strtotime($es->arrivet)) }}" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Remarks</label>
+                                        <div class="form-control-wrap ">
+                                            <textarea class="form-control">{{ $es->remarks }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +168,6 @@
         </div> <!-- modal @e -->
         @endforeach
 
-        
         <script >
 
             $(document).ready(function() {

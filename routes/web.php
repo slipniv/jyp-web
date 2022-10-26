@@ -14,6 +14,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\OngoingController;
 use App\Http\Controllers\TrashController;
+use App\Http\Controllers\CompletedController;
 use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Location;
@@ -53,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('schedule', [ScheduleController::class, 'index'])->name('schedule');
 
     Route::get('ongoing', [OngoingController::class, 'index'])->name('ongoing');
+    Route::post('updateSched/{id}', [OngoingController::class, 'update'])->name('updateSched');
+
+    Route::get('completed', [CompletedController::class, 'index'])->name('completed');
 
     Route::get('archive', [TrashController::class, 'trash'])->name('trash');
     Route::get('restoreDriver/{id}', [TrashController::class, 'restore'])->name('restoreDriver');

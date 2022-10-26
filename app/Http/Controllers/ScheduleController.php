@@ -26,9 +26,6 @@ class ScheduleController extends Controller
         $news->status = $request->input('status');
         $news->save();
             if($request->input('status') == 3){
-
-                Schedule::destroy($id);
-
                 $news = new Ongoing();
                 $news->driver_id = $request->input('Drivername');
                 $news->destination_id = $request->input('DestinationLoc');

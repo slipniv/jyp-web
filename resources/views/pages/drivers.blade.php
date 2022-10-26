@@ -193,19 +193,11 @@
                                         <div class="form-group">
                                             <label class="form-label" for="color">Color</label>
                                             <div class="form-control-wrap">
-                                                <select class="form-control" id="color" name="color" disabled readonly>
-                                                    <option value="{{ $ed->color }}" selected>
-                                                        <?php
-                                                        if($ed->color == "1"){
-                                                          echo "Red";
-                                                        }elseif($ed->color == "2"){
-                                                          echo "Green";
-                                                        }elseif($ed->color == "3"){
-                                                          echo "Blue";
-                                                        }elseif($ed->color == "4"){
-                                                          echo "Yellow";
-                                                        }
-                                                        ?>
+                                                <select name="status" id="color" class="custom-select select" disabled readonly>
+                                                <option value="1" <?php echo isset($ed->color) && $ed->color == 1 ? 'selected' : '' ?>>Red</option>
+                                                <option value="2" <?php echo isset($ed->color) && $ed->color == 2 ? 'selected' : '' ?>>Green</option>
+                                                <option value="3" <?php echo isset($ed->color) && $ed->color == 3 ? 'selected' : '' ?>>Blue</option>
+                                                <option value="4" <?php echo isset($ed->color) && $ed->color == 4 ? 'selected' : '' ?>>Yellow</option>
                                                 </select>
                                             </div>
                                         </div>

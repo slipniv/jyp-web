@@ -246,9 +246,6 @@
                                         <li>
                                             <button id="updateSchedule" type="submit" class="btn btn-primary">Update Schedule</button>
                                         </li>
-                                        <li>
-                                            <button id="resetEvent" data-bs-dismiss="modal" class="btn btn-danger btn-dim">Discard</button>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>

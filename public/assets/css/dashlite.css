@@ -2152,6 +2152,7 @@ progress {
   padding: 0.6875rem 1rem;
   font-size: 0.9375rem;
   border-radius: 5px;
+  border-color: #000;
 }
 .form-control-lg::file-selector-button {
   padding: 0.6875rem 1rem;
@@ -35039,6 +35040,50 @@ button.close {
   width: 66px;
 }
 
+
+a.effect, a:focus, a:hover, a:active {
+  outline: 0 !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  color: #4d8ce2;
+}
+
+
+.cl-effect-1 a::before,
+.cl-effect-1 a::after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 a::before {
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.cl-effect-1 a::after {
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+
+.cl-effect-1 a:hover::before,
+.cl-effect-1 a:hover::after,
+.cl-effect-1 a:focus::before,
+.cl-effect-1 a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
 .nk-sale-data {
   flex-shrink: 0;
 }
@@ -35050,6 +35095,7 @@ button.close {
   display: block;
   font-size: 1.75rem;
   color: #364a63;
+  margin-left: 99px;
 }
 .nk-sale-data .amount .change {
   font-size: 0.875rem;

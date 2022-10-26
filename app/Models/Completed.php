@@ -4,23 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Drivers;
 use App\Models\Destination;
+use App\Models\Ongoing;
 
-class Ongoing extends Model
+class Completed extends Model
 {
-    use SoftDeletes;
     protected $connection = 'mysql';
-    protected $table = 'ongoing';
+    protected $table = 'completed';
     protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
-        'arrivalDate',
-        'startingDate',
+        'arrive',
         'driver_id',
         'destination_id',
-        'status_id'
+        'status_id',
+        'remarks'
     );
 
     public function driver(){
@@ -30,5 +29,10 @@ class Ongoing extends Model
     public function destination(){
         return $this->hasOne(Destination::class,'id','destination_id');
     }
+
+    public function ongoing(){
+        return $this->hasOne(ongoing::class,'id','arrive_id');
+    }
+    
 
 }

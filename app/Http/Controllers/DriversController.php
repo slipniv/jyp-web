@@ -40,6 +40,9 @@ class DriversController extends Controller
         $newd->contact = $request->input('contact');
         $newd->color = $request->input('color');
         $newd->save();
+
+        Alert::success('Driver updated Successfully!');
+
         return redirect('drivers');
 
     }
@@ -49,6 +52,8 @@ class DriversController extends Controller
         if(!is_null($driver)){
             $driver->delete();
         }
+
+        Alert::danger('Driver deleted Successfully!');
 
         return redirect('drivers');
 
