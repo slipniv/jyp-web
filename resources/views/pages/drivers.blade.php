@@ -40,7 +40,7 @@
                             <td>{{ $dis->contact }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                <button type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Trash</button>
+                                <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Trash</button>
                             </td>
                         </tr>
                     @endforeach
@@ -99,22 +99,6 @@
                                     <label class="form-label" for="contact">Contact Number</label>
                                     <div class="form-control-wrap">
                                         <input type="text" onkeypress="return isNumber(event)" class="form-control" id="contact" name="contact" minlength="11" maxlength="11" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="color">Color</label>
-                                    <div class="form-control-wrap">
-                                        <div class="form-control-select">
-                                            <select class="form-control" id="color" name="color">
-                                                <option disabled selected>select one option</option>
-                                                <option style="background-color:#eb3434" value="1">Red</option>
-                                                <option style="background-color:#34eb89" value="2">Green</option>
-                                                <option style="background-color:#3471eb" value="3">Blue</option>
-                                                <option style="background-color:#dceb34" value="4">Yellow</option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -186,19 +170,6 @@
                                             <div class="form-control-wrap">
                                                 <input type="text" onkeypress="return isNumber(event)" class="form-control" id="contact" name="contact"
                                                     value="{{ $ed->contact }}" minlength="11" maxlength="11">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="color">Color</label>
-                                            <div class="form-control-wrap">
-                                                <select name="status" id="color" class="custom-select select" disabled readonly>
-                                                <option value="1" <?php echo isset($ed->color) && $ed->color == 1 ? 'selected' : '' ?>>Red</option>
-                                                <option value="2" <?php echo isset($ed->color) && $ed->color == 2 ? 'selected' : '' ?>>Green</option>
-                                                <option value="3" <?php echo isset($ed->color) && $ed->color == 3 ? 'selected' : '' ?>>Blue</option>
-                                                <option value="4" <?php echo isset($ed->color) && $ed->color == 4 ? 'selected' : '' ?>>Yellow</option>
-                                                </select>
                                             </div>
                                         </div>
                                     </div>

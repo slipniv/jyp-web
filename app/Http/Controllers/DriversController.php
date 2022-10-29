@@ -21,7 +21,6 @@ class DriversController extends Controller
         $newd->mname = $request->input('mname');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
-        $newd->color = $request->input('color');
         $newd->save();
 
         Alert::success('Driver added Successfully!');
@@ -38,7 +37,6 @@ class DriversController extends Controller
         $newd->mname = $request->input('mname');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
-        $newd->color = $request->input('color');
         $newd->save();
 
         Alert::success('Driver updated Successfully!');

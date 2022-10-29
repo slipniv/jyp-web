@@ -57,6 +57,9 @@
                                 ?>
                             </td>
                         </tr>
+                        <?php 
+                        $cnt=$cnt+1;
+                        ?>
                     @endforeach
                 </tbody>
             </table>

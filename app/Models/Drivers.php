@@ -14,10 +14,11 @@ class Drivers extends Model
     protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
-        'name',
+        'fname',
+        'mname',
+        'lname',
         'platenumber',
-        'contact',
-        'color'
+        'contact'
     );
 
 }

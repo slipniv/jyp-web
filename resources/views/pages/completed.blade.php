@@ -9,6 +9,40 @@
 
         ?>
 
+        
+        <div class="row">
+            <div class="colo">
+                <div class="card card-border center">
+                    <div class="card-inner">
+                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Schedule(s)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="colo">
+                <div class="card card-border center">
+                    <div class="card-inner">
+                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Schedule(s)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="colo">
+                <div class="card card-border center">
+                    <div class="card-inner">
+                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Schedule(s)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="colo">
+                <div class="card card-border center">
+                    <div class="card-inner">
+                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Schedule(s)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">

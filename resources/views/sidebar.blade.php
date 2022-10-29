@@ -22,23 +22,12 @@
                             <span class="nk-menu-text">Driver Details</span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle" data-bs-original-title="" title="">
-                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                    <li class="nk-menu-item">
+                        <a href="{{ route('schedule') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                             <span class="nk-menu-text">Schedules</span>
                         </a>
-                        <ul class="nk-menu-sub" style="display: none;">
-                            <li class="nk-menu-item">
-                                <a href="{{ route('schedule') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Schedule</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="{{ route('ongoing') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Ongoing Deliveries</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="{{ route('completed') }}" class="nk-menu-link" data-bs-original-title="" title=""><span class="nk-menu-text">Completed Deliveries</span></a>
-                            </li>
-                        </ul>
-                    </li><!-- .nk-menu-Dropdown -->
+                    </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="#" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-reports"></em></span>

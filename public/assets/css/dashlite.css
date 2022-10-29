@@ -107,7 +107,7 @@
   --bs-secondary-rgb: 54, 74, 99;
   --bs-success-rgb: 30, 224, 172;
   --bs-info-rgb: 9, 194, 222;
-  --bs-warning-rgb: 244, 189, 14;
+  --bs-warning-rgb: 195, 169, 0;
   --bs-danger-rgb: 232, 83, 71;
   --bs-light-rgb: 229, 233, 242;
   --bs-dark-rgb: 31, 43, 58;
@@ -198,6 +198,7 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -251,7 +252,7 @@ blockquote {
 b,
 strong {
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 24px;
 }
 
 small, .small {
@@ -692,6 +693,12 @@ progress {
 
 .col {
   flex: 1 0 0%;
+}
+
+.colo {
+  flex: 1 0 0%;
+  margin: auto;
+  margin-bottom: 2em;
 }
 
 .row-cols-auto > * {
@@ -4403,6 +4410,7 @@ div.dataTables_wrapper div.dataTables_filter .form-floating > input:not(:placeho
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 4px;
 }
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -14071,6 +14079,12 @@ a:hover .btn-trigger:before {
   padding: 10px;
 }
 
+.card-border {
+  border: 1px solid #dbdfea;
+  border-radius: 30px;
+  box-shadow: 1px 1px 4px 4px;
+}
+
 .card-bordered {
   border: 1px solid #dbdfea;
   border-top-right-radius: 25px;
@@ -14115,6 +14129,8 @@ a:hover .btn-trigger:before {
 }
 .card-title-group .card-title {
   margin-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .card-title-group:only-child, .card-title-group .card-search {
   margin-top: -0.25rem;
