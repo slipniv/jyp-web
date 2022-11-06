@@ -14071,6 +14071,7 @@ a:hover .btn-trigger:before {
   right: 40px;
   width: 300px;
   padding: 10px;
+  margin-right: 4em;
 }
 .left {
   position: absolute;

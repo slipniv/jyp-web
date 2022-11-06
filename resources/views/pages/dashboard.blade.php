@@ -17,12 +17,12 @@
             </div><!-- .nk-block-head-content -->
         </div>
         <div class="right">
-            <a href="#" class="btn btn-flex bg-body h-40px px-5">
+            <div class="btn btn-flex bg-body h-40px px-5">
                 <span class="me-4">
                     <span class="text-muted fw-semibold me-1">Today</span>
                     <span class="text-primary fw-bold"><?= date('F j, Y',strtotime($date))?> | <?= date('h:i A',strtotime($time))?></span>
                 </span>
-            </a>
+            </div>
         </div>
         
         <br>

@@ -24,7 +24,7 @@
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="{{ route('schedule') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Schedules</span>
                         </a>
                     </li><!-- .nk-menu-item -->
