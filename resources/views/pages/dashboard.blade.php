@@ -24,7 +24,7 @@
                 </span>
             </div>
         </div>
-        
+
         <br>
         <div class="row mt-4">
             <div class="col-md-4">
@@ -65,7 +65,7 @@
                         </div>
                         <div class="card-title-group align-start mb-2 center">
                             <div class="card-title">
-                                <div><h6 class="title text-danger"><b>Pending Schedule(s)</b></h6></div>
+                                <div><h6 class="title text-danger"><b>Pending Delivery(s)</b></h6></div>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="card-title-group align-start mb-2 center">
                             <div class="card-title">
-                                <div><h6 class="title text-info"><b>Ongoing Schedule(s)</b></h6></div>
+                                <div><h6 class="title text-info"><b>Ongoing Delivery(s)</b></h6></div>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="card-title-group align-start mb-2 center">
                             <div class="card-title">
-                                <div><h6 class="title text-success"><b>Completed Deliveries</b></h6></div>
+                                <div><h6 class="title text-success"><b>Completed Delivery(s)</b></h6></div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="card-title-group align-start mb-2 center">
                             <div class="card-title">
-                                <div><h6 class="title text-warning"><b>Over Due Deliveries</b></h6></div>
+                                <div><h6 class="title text-warning"><b>Over Due Delivery(s)</b></h6></div>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Activity Logs</h3>
+                <h3 class="nk-block-title page-title">Delivery Logs</h3>
             </div><!-- .nk-block-head-content -->
         </div>
     </div>
@@ -39,7 +39,7 @@
                             <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: '' }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ date('F j, Y',strtotime( $dis->arrive_id )) }}</td>
-                            <td> 
+                            <td>
                                 <?php
                                 if($dis->status_id == 1){
                                   ?>
@@ -57,7 +57,7 @@
                                 ?>
                             </td>
                         </tr>
-                        <?php 
+                        <?php
                         $cnt=$cnt+1;
                         ?>
                     @endforeach

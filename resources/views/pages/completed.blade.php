@@ -9,7 +9,7 @@
 
         ?>
 
-        
+
         <div class="row">
             <div class="colo">
                 <div class="card card-border center">
@@ -46,7 +46,7 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">On-going Deliveries</h3>
+                    <h3 class="nk-block-title page-title">Completed Deliveries</h3>
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>
@@ -58,7 +58,7 @@
                         <td>ID</td>
                         <td>Name</td>
                         <td>Destination</td>
-                        <td>Arrival Date</td>
+                        <td>Arrived Date</td>
                         <td><center>Status</center></td>
                         <td>Action</td>
                     </tr>

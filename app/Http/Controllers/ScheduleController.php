@@ -7,7 +7,9 @@ use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Destination;
 use App\Models\Ongoing;
+use App\Models\Message;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ScheduleController extends Controller
 {
@@ -45,7 +47,7 @@ class ScheduleController extends Controller
         $news->destination_id = $request->input('DestinationLoc');
         $news->date = $request->input('date');
         $news->time = $request->input('time');
-        $news->status = $request->input('status');
+        $news->status = 2;
         $news->save();
         return redirect('schedule');
 
@@ -56,6 +58,17 @@ class ScheduleController extends Controller
         Schedule::destroy($id);
 
         return redirect('schedule');
+
+    }
+
+    public function send(Request $request, $id){
+
+        $news = new Message();
+        $news->schedule_id = $id;
+        $news->status = 0;
+        $news->save();
+
+        Alert::success('Message Sent!');
 
     }
 }

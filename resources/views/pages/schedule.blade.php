@@ -5,7 +5,7 @@
         foreach ($disp as $dis){
             $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
         }
-        
+
         ?>
 
 
@@ -13,28 +13,28 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Schedule(s)</a>
+                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Schedule(s)</a>
+                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Schedule(s)</a>
+                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Schedule(s)</a>
+                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -45,10 +45,10 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Schedule</h3>
+                    <h3 class="nk-block-title page-title">Pending Deliveries</h3>
                 </div><!-- .nk-block-head-content -->
                 <div class="nk-block-head-content">
-                    <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Schedule</span></a>
+                    <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Delivery</span></a>
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>
@@ -70,7 +70,7 @@
                 <tbody>
                     @foreach ($disp as $dis)
                         <tr>
-                            
+
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
@@ -99,7 +99,7 @@
                                     <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
                                     <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
                                     {{-- <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button> --}}
-                                    <a class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href=""></a>
+                                    <a class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href="javascript:;" id="send-message" data-id="{{ $dis->id }}"></a>
                                 </td>
                         </tr>
                     @endforeach
@@ -123,7 +123,7 @@
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Schedule</h5>
+                        <h5 class="modal-title">Add Delivery</h5>
                         <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <em class="icon ni ni-cross"></em>
                         </a>
@@ -174,18 +174,6 @@
                                                     <input type="TIME" id="time" name="time" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="status">Status</label>
-                                        <div class="form-control-wrap ">
-                                                <select class="form-control" id="status" name="status">
-                                                    <option value="2">Pending</option>
-                                                    {{-- <option value="1">Completed</option>
-                                                    <option value="3">Ongoing</option> --}}
-                                                </select>
                                         </div>
                                     </div>
                                 </div>
@@ -395,6 +383,31 @@
                     })
                     let ajaxData = {
                         url: "<?php echo url("/"); ?>" + "/deleteSchedule/" + driverId,
+                        type: 'POST',
+                        async: false,
+                        success: function (e) {
+                            window.location.reload();
+                        },
+                        error: function (e) {
+                            // Show popup confirmation
+                            console.error(e)
+                        },
+                    }
+
+                    $.ajax(ajaxData)
+                });
+
+
+
+                $('body').on('click','#send-message', function () {
+                    var driverId = $(this).attr('data-id');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        },
+                    })
+                    let ajaxData = {
+                        url: "<?php echo url("/"); ?>" + "/sendMessage/" + driverId,
                         type: 'POST',
                         async: false,
                         success: function (e) {

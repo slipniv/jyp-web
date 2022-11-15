@@ -9,7 +9,9 @@
      --}}
 <select class="form-control" id="pin" name="pin">
     @foreach ($loc as $ss)
-    <option value="{{ $ss->id }}" data-longitude="{{ $ss->longitude }}" data-latitude="{{ $ss->latitude }}">{{ $ss->driver? $ss->driver->fname: ''  }} {{ $ss->driver? $ss->driver->mname: ''  }} {{ $ss->driver? $ss->driver->lname: ''  }}</option>
+        @if( $ss->location)
+            <option value="{{ $ss->location ? $ss->location->id : 0}}" data-longitude="{{ $ss->location ?$ss->location->longitude :0}}" data-latitude="{{ $ss->location ? $ss->location->latitude:0 }}">{{ $ss->fname? $ss->fname: ''  }} {{ $ss->mname? $ss->mname: ''  }} {{ $ss->lname? $ss->lname: ''  }}</option>
+        @endif
     @endforeach
 </select>
         <div id="map"></div>

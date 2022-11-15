@@ -17,6 +17,12 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-item">
+                        <a href="{{ route('dashboard') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-dash"></em></span>
+                            <span class="nk-menu-text">Dashboard</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
                         <a href="{{ route('drivers') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                             <span class="nk-menu-text">Driver Details</span>
@@ -25,7 +31,7 @@
                     <li class="nk-menu-item">
                         <a href="{{ route('schedule') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                            <span class="nk-menu-text">Schedules</span>
+                            <span class="nk-menu-text">Deliveries</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
@@ -44,6 +50,12 @@
                         <a href="{{ route('location') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-map"></em></span>
                             <span class="nk-menu-text">Location</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ route('trash') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-trash"></em></span>
+                            <span class="nk-menu-text">Trash Bin</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->

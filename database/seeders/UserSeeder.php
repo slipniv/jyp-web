@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         DB::table('user')->updateOrCreate(
             ['name' => 'admin'],
-            ['name' => 'admin', 'email' => 'sample@admin.com', 'password' => '$2y$10$hXBXJoxkmgHARHRtH6nw0ebZ.R8qXobEYvicGqx7a2YcBdJPeVZuy']
+            ['name' => 'admin', 'email' => 'sample@admin.com', 'password' => '$2y$10$n2mWUnOxzDKyfL1bt/u2pOdWKlD3p1QSIw7EdB76RD.uxSk8QxdXK']
         );
     }
 }

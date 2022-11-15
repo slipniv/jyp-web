@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Schedule;
 
-class Drivers extends Model
+class Message extends Model
 {
-    use SoftDeletes;
     protected $connection = 'mysql';
-    protected $table = 'driver';
+    protected $table = 'message';
     protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
-        'fname',
-        'mname',
-        'lname',
-        'platenumber',
-        'contact',
-        'tracknum'
+        'schedule_id',
+        'status'
     );
 
+    public function schedule(){
+        return $this->hasOne(Schedule::class,'id','schedule_id');
+    }
 }

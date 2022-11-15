@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Location;
-use App\Models\Driver;
+use App\Models\Drivers;
 
 class LocationController extends Controller
 {
     public function index()
     {
-        return view('pages.location')->with('loc', Location::query()->with('driver')->get());
+        $query = Drivers::query()->get();
+        foreach($query as $q){
+            $loc= Location::query()->where('driver_id',$q->id)->orderby('id','DESC')->first();
+            $q->location =$loc;
+        }
+        return view('pages.location')->with('loc', $query);
     }
 }
