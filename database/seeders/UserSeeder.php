@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Supper\Facades\DB;
+use DB;
 use App\Models\User;
 
 
@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user')->updateOrCreate(
+        DB::table('users')->updateOrInsert(
             ['name' => 'admin'],
-            ['name' => 'admin', 'email' => 'sample@admin.com', 'password' => '$2y$10$n2mWUnOxzDKyfL1bt/u2pOdWKlD3p1QSIw7EdB76RD.uxSk8QxdXK']
+            ['name' => 'admin', 'email' => 'sample@admin.com', 'password' => '$2y$10$rGTUvPqFRxtReuzoX7.4bO/6aZCkUrIIIku4SUnRPUuksUcO7s5Nu']
         );
     }
 }

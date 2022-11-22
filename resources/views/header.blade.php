@@ -27,7 +27,7 @@
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1">
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="{{ route('trash') }}"><em class="icon ni ni-setting-alt"></em><span>Administrator Settings</span></a></li>
+                                    <li><a href="{{ route('account') }}"><em class="icon ni ni-setting-alt"></em><span>Account Settings</span></a></li>
                                 </ul>
                             </div>
                             <div class="dropdown-inner">

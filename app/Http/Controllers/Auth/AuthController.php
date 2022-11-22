@@ -12,29 +12,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+    
     public function index()
     {
         return view('auth.login');
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function registration()
-    {
-        return view('auth.registration');
-    }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
+    // public function registration()
+    // {
+    //     return view('auth.registration');
+    // }
+
     public function postLogin(Request $request)
     {
         $request->validate([
@@ -43,6 +31,8 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+
+            Alert::success('Good Day Admin!','Welcome to Dashboard');
 
             return redirect()->intended('dashboard');
         }
@@ -53,40 +43,28 @@ class AuthController extends Controller
 
 
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function postRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:1',
-        ]);
 
-        Alert::success('Account Created!','Please Login.');
+    // public function postRegistration(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email|unique:users',
+    //         'password' => 'required|min:1',
+    //     ]);
 
-        $data = $request->all();
-        $check = $this->create($data);
+    //     Alert::success('Account Created!','Please Login.');
 
-        return redirect("login");
-    }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+    //     $data = $request->all();
+    //     $check = $this->create($data);
+
+    //     return redirect("login");
+    // }
+
     public function dashboard()
     {
         return view('pages.dashboard');
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function create(array $data)
     {
       return User::create([
@@ -95,11 +73,7 @@ class AuthController extends Controller
         'password' => Hash::make($data['password'])
       ]);
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function logout() {
         Session::flush();
         Auth::logout();

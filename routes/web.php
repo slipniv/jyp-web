@@ -14,9 +14,12 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\OngoingController;
 use App\Http\Controllers\TrashController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompletedController;
+
 use App\Http\Controllers\LocationAPIController;
 use App\Http\Controllers\MessageAPIController;
+
 use App\Models\Drivers;
 use App\Models\Schedule;
 use App\Models\Location;
@@ -45,8 +48,8 @@ use App\Models\Location;
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+// Route::get('registration', [AuthController::class, 'registration'])->name('register');
+// Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 
 Route::get('storeLocation', [LocationAPIController::class,'store']);
 
@@ -64,6 +67,10 @@ Route::middleware('auth')->group(function () {
     Route::post('updateSched/{id}', [OngoingController::class, 'update'])->name('updateSched');
 
     Route::get('completed', [CompletedController::class, 'index'])->name('completed');
+
+    Route::get('account', [AccountController::class, 'index'])->name('account');
+    Route::post('updatePass/{id}', [AccountController::class, 'updatePass'])->name('updatePass');
+    Route::post('updateEmail/{id}', [AccountController::class, 'updateEmail'])->name('updateEmail');
 
     Route::get('archive', [TrashController::class, 'trash'])->name('trash');
     Route::get('restoreDriver/{id}', [TrashController::class, 'restore'])->name('restoreDriver');

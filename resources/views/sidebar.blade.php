@@ -40,12 +40,12 @@
                             <span class="nk-menu-text">Reports</span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
+                    {{-- <li class="nk-menu-item">
                         <a href="{{ route('history') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-dot-box"></em></span>
                             <span class="nk-menu-text">History Logs</span>
                         </a>
-                    </li><!-- .nk-menu-item -->
+                    </li><!-- .nk-menu-item --> --}}
                     <li class="nk-menu-item">
                         <a href="{{ route('location') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-map"></em></span>
