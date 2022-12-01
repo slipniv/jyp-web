@@ -14,28 +14,28 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Schedule(s)</a>
+                        <a href="{{ route('schedule') }}" class="title text-black" style="font-weight: 800">Pending Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Schedule(s)</a>
+                        <a href="{{ route('ongoing') }}" class="title text-black" style="font-weight: 800">Ongoing Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Schedule(s)</a>
+                        <a href="{{ route('completed') }}" class="title text-black" style="font-weight: 800">Completed Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Schedule(s)</a>
+                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <td>Name</td>
                         <td>Destination</td>
                         <td>Schedule Date</td>
-                        <td>Arrival Date</td>
+                        <td>Estimated Arrival Date</td>
                         <td><center>Status</center></td>
                         <td>Action</td>
                     </tr>
@@ -93,6 +93,7 @@
                                 <td>
                                     <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
                                     <a data-bs-toggle="modal" href="#editSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
+                                    <a class="btn btn-dim btn-sm icon ni ni-eye" style="margin-left: 2px;" href="{{ route('location')}}" id="view-location" data-id="{{ $dis->id }}"></a>
                                 </td>
                         </tr>
                     @endforeach

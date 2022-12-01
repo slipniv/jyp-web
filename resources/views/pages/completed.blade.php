@@ -14,28 +14,28 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Schedule(s)</a>
+                        <a href="{{ route('schedule') }}" class="title text-black" style="font-weight: 800">Pending Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Schedule(s)</a>
+                        <a href="{{ route('ongoing') }}" class="title text-black" style="font-weight: 800">Ongoing Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Schedule(s)</a>
+                        <a href="{{ route('completed') }}" class="title text-black" style="font-weight: 800">Completed Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Schedule(s)</a>
+                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>

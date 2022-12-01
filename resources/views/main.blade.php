@@ -23,6 +23,16 @@
 
      <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
+<style type="text/css">
+    body {
+     counter-reset: num;
+    }
+
+    h6::before {
+    counter-increment: num;
+    content: counter(num);
+    }
+</style>
 
 <body class="nk-body bg-lighter npc-general has-sidebar">
     <div class="nk-app-root">

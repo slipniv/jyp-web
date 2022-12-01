@@ -40,7 +40,7 @@
                             <td>{{ $dis->contact }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Trash</button>
+                                <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
                             </td>
                         </tr>
                     @endforeach

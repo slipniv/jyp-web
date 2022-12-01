@@ -13,28 +13,28 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('schedule') }}" class="title text-danger" style="font-weight: 800">Pending Delivery(s)</a>
+                        <a href="{{ route('schedule') }}" class="title text-black" style="font-weight: 800">Pending Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('ongoing') }}" class="title text-info" style="font-weight: 800">Ongoing Delivery(s)</a>
+                        <a href="{{ route('ongoing') }}" class="title text-black" style="font-weight: 800">Ongoing Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="{{ route('completed') }}" class="title text-success" style="font-weight: 800">Completed Delivery(s)</a>
+                        <a href="{{ route('completed') }}" class="title text-black" style="font-weight: 800">Completed Delivery(s)</a>
                     </div>
                 </div>
             </div>
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-warning" style="font-weight: 800">Over Due Delivery(s)</a>
+                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -57,6 +57,7 @@
             <table id="schedule_data" class="table table-striped">
                 <thead>
                     <tr>
+                        <td>#</td>
                         <td>ID</td>
                         <td>Plate Number</td>
                         <td>Name</td>
@@ -70,7 +71,7 @@
                 <tbody>
                     @foreach ($disp as $dis)
                         <tr>
-
+                            <td><h6></h6></td>
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>

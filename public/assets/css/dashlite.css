@@ -105,9 +105,9 @@
   --bs-lighter: #f5f6fa;
   --bs-primary-rgb: 101, 118, 255;
   --bs-secondary-rgb: 54, 74, 99;
-  --bs-success-rgb: 30, 224, 172;
-  --bs-info-rgb: 9, 194, 222;
-  --bs-warning-rgb: 195, 169, 0;
+  --bs-success-rgb: 20, 168, 85;
+  --bs-info-rgb: 0, 102, 102;
+  --bs-warning-rgb: 167,133,29;
   --bs-danger-rgb: 232, 83, 71;
   --bs-light-rgb: 229, 233, 242;
   --bs-dark-rgb: 31, 43, 58;
@@ -165,7 +165,7 @@ hr:not([size]) {
   height: 1px;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+ h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-family: Nunito, sans-serif;
@@ -7845,6 +7845,11 @@ div.dataTables_wrapper div.dataTables_filter .form-floating > input:not(:placeho
   color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-black {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-danger {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
@@ -12667,8 +12672,8 @@ svg {
 }
 
 .bg-outline-info {
-  color: #09c2de;
-  border-color: #6bdaeb;
+  color: #006666;
+  border-color: #006666;
 }
 
 .bg-outline-warning {
@@ -12732,9 +12737,9 @@ svg {
 }
 
 .badge-dim.bg-outline-success {
-  color: #1ee0ac;
+  color: #14a955;
   background-color: #e6fcf6;
-  border-color: #a5f3de;
+  border-color: #14a955;
 }
 
 .badge-dim.bg-info {
@@ -12744,9 +12749,9 @@ svg {
 }
 
 .badge-dim.bg-outline-info {
-  color: #09c2de;
+  color: #006666;
   background-color: #e4f8fb;
-  border-color: #9de7f2;
+  border-color: #006666;
 }
 
 .badge-dim.bg-warning {
@@ -12756,9 +12761,9 @@ svg {
 }
 
 .badge-dim.bg-outline-warning {
-  color: #f4bd0e;
+  color: #A7851D;
   background-color: #fef8e4;
-  border-color: #fbe59f;
+  border-color: #A7851D;
 }
 
 .badge-dim.bg-danger {

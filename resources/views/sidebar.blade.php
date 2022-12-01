@@ -55,7 +55,7 @@
                     <li class="nk-menu-item">
                         <a href="{{ route('trash') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-trash"></em></span>
-                            <span class="nk-menu-text">Trash Bin</span>
+                            <span class="nk-menu-text">Archived Data</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->
