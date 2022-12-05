@@ -35,7 +35,7 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
+                        <a href="{{ route('overdue') }}" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Completed Deliveries</h3>
+                    <h3 class="nk-block-title page-title">Over-Due Deliveries</h3>
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>

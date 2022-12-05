@@ -7,8 +7,47 @@
             $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
         }
 
-        ?>
+        date_default_timezone_set('Asia/Manila');
 
+            $date = date('Y-m-d');
+
+        ?>
+        <script>
+            
+            function fnExcelReport()
+                {
+                    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+                    var textRange; var j=0;
+                    tab = document.getElementById('schedule_data'); // id of table
+
+                    for(j = 0 ; j < tab.rows.length ; j++) 
+                    {     
+                        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+                        //tab_text=tab_text+"</tr>";
+                    }
+
+                    tab_text=tab_text+"</table>";
+                    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+                    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+                    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+                    var ua = window.navigator.userAgent;
+                    var msie = ua.indexOf("MSIE "); 
+
+                    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+                    {
+                        txtArea1.document.open("txt/html","replace");
+                        txtArea1.document.write(tab_text);
+                        txtArea1.document.close();
+                        txtArea1.focus(); 
+                        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+                    }  
+                    else                 //other browser not tested on IE 11
+                        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+                    return (sa);
+                }
+        </script>
 
         <div class="row">
             <div class="colo">
@@ -35,7 +74,7 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
+                        <a href="{{ route('overdue') }}" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -52,8 +91,34 @@
         </div>
         
 
+        <form action="searchDate" method="POST">
+            @csrf
+            <br>
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="form-group row1">
+                        <label for="date" class="col-form-label col-sm-2">Starting Date</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control input-sm" id="fromDate" name="fromDate" value="{{isset($from)?$from:''}}" required/>
+                        </div>
+                        <label for="date" class="col-form-label col-sm-2">End Date</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control input-sm" id="toDate" name="toDate" value="{{isset($to)?$to:''}}" required/>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" role="button" class="button-80" name="search" title="Search">🔎︎</button>
+                        </div>
+                        <div class="col-sm-1">
+                            <a type="submit" href="#" class="myButton"  onclick="fnExcelReport();">Print</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </form>
+
         <div class="table-responsive">
-            <table id="schedule_data" class="table table-striped">
+            <table id="schedule_data"  class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -67,7 +132,7 @@
                 <tbody>
                     @foreach ($ong as $dis)
                         <tr>
-                            <td>{{ $dis->id }}</td>
+                            <td>{{ $dis->deliver_id }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->arrive)) }}</td>
@@ -201,13 +266,16 @@
                 </div>
             </div>
         </div> <!-- modal @e -->
+        <iframe id="txtArea1" style="display:none"></iframe>
         @endforeach
+
 
         <script >
 
             $(document).ready(function() {
                 $('#schedule_data').DataTable();
-            });
+
+            } );
         </script>
 
 

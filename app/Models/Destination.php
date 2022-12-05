@@ -12,6 +12,8 @@ class Destination extends Model
     protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
-        'area'
+        'area',
+        'latitude',
+        'longitude'
     );
 }

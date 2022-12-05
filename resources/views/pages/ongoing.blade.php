@@ -35,7 +35,7 @@
             <div class="colo">
                 <div class="card card-border center">
                     <div class="card-inner">
-                        <a href="" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
+                        <a href="{{ route('overdue') }}" class="title text-black" style="font-weight: 800">Over Due Delivery(s)</a>
                     </div>
                 </div>
             </div>
@@ -55,6 +55,7 @@
             <table id="schedule_data" class="table table-striped">
                 <thead>
                     <tr>
+                        <td>#</td>
                         <td>ID</td>
                         <td>Name</td>
                         <td>Destination</td>
@@ -67,7 +68,8 @@
                 <tbody>
                     @foreach ($disp as $dis)
                         <tr>
-                            <td>{{ $dis->id }}</td>
+                            <td><h4></h4></td>
+                            <td>{{ $dis->delivery_id }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->startingDate)) }}</td>

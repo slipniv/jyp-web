@@ -12,7 +12,7 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return view('pages.account')->with('user', User::all());
+        return view('pages.account')->with('user', User::find(Auth::id()));
     }
 
     public function updateEmail(Request $request)

@@ -12,13 +12,12 @@
                     </div>
                 </div>
             </div>
-            @foreach ($user as $use)
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body p-2 pt-4" style="min-height: 500px;">
                                 <div class="col-md-12">
-                                    <form action="{{ route('updateEmail', $use->id) }}" method="POST" autocomplete="off">
+                                    <form action="{{ route('updateEmail', $user->id) }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-2 text-right"><label class="mt-2"
@@ -27,7 +26,7 @@
                                             <div class="col-md-10"><input required
                                                     style="background-color: #fff !important;"
                                                     class="form-control form-control-sm" placeholder="Username"
-                                                    value="{{ $use->email }}" name="iemail"></input>
+                                                    value="{{ $user->email }}" name="iemail"></input>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
@@ -37,7 +36,7 @@
                                         </div>
                                     </form>
                                     <hr>
-                                    <form action="{{ route('updatePass', $use->id) }}" method="POST" autocomplete="off">
+                                    <form action="{{ route('updatePass', $user->id) }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-2 text-right"><label class=""
@@ -79,7 +78,6 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
         </div>
     </div>
 @endsection

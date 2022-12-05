@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('completed', function (Blueprint $table) {
+        Schema::create('overdue', function (Blueprint $table) {
             $table->id();
             $table->integer('deliver_id');
             $table->integer('driver_id');
             $table->integer('destination_id');
             $table->integer('status_id');
-            $table->date('arrive');
-            $table->time('arrivet');
-            $table->string('remarks', 255);
+            $table->date('overdate');
+            $table->time('overtime');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('completed');
+        //
     }
 };

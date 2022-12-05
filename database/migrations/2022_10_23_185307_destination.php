@@ -11,6 +11,8 @@ return new class extends Migration
         Schema::create('destination', function (Blueprint $table) {
             $table->id();
             $table->string('area');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->rememberToken();
             $table->timestamps();
         });

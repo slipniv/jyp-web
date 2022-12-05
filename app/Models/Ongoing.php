@@ -18,6 +18,7 @@ class Ongoing extends Model
         'id',
         'arrivalDate',
         'startingDate',
+        'delivery_id',
         'driver_id',
         'destination_id',
         'status_id'
@@ -29,6 +30,10 @@ class Ongoing extends Model
 
     public function destination(){
         return $this->hasOne(Destination::class,'id','destination_id');
+    }
+
+    public function delivery(){
+        return $this->hasOne(Schedule::class,'id','delivery_id');
     }
 
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\OngoingController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompletedController;
+use App\Http\Controllers\OverController;
 
 use App\Http\Controllers\LocationAPIController;
 use App\Http\Controllers\MessageAPIController;
@@ -48,8 +49,8 @@ use App\Models\Location;
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-// Route::get('registration', [AuthController::class, 'registration'])->name('register');
-// Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('registration', [AuthController::class, 'registration'])->name('register');
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 
 Route::get('storeLocation', [LocationAPIController::class,'store']);
 
@@ -67,6 +68,9 @@ Route::middleware('auth')->group(function () {
     Route::post('updateSched/{id}', [OngoingController::class, 'update'])->name('updateSched');
 
     Route::get('completed', [CompletedController::class, 'index'])->name('completed');
+    Route::post('searchDate', [CompletedController::class, 'search'])->name('search');
+
+    Route::get('overdue', [OverController::class, 'index'])->name('overdue');
 
     Route::get('account', [AccountController::class, 'index'])->name('account');
     Route::post('updatePass/{id}', [AccountController::class, 'updatePass'])->name('updatePass');

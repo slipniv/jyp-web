@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Drivers;
 use App\Models\Destination;
 use App\Models\Ongoing;
+use Illuminate\Http\Request;
 
 class Completed extends Model
 {
@@ -16,6 +17,7 @@ class Completed extends Model
     protected $fillable = array (
         'id',
         'arrive',
+        'deliver_id',
         'driver_id',
         'destination_id',
         'status_id',
@@ -32,6 +34,10 @@ class Completed extends Model
 
     public function ongoing(){
         return $this->hasOne(ongoing::class,'id','arrive_id');
+    }
+
+    public function deliver(){
+        return $this->hasOne(Schedule::class,'id','deliver_id');
     }
     
 

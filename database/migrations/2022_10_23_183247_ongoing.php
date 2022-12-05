@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('ongoing', function (Blueprint $table) {
             $table->id();
+            $table->integer('delivery_id');
             $table->integer('driver_id');
             $table->integer('destination_id');
             $table->integer('status_id');

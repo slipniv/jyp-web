@@ -18,10 +18,10 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    // public function registration()
-    // {
-    //     return view('auth.registration');
-    // }
+    public function registration()
+    {
+        return view('auth.registration');
+    }
 
     public function postLogin(Request $request)
     {
@@ -44,21 +44,21 @@ class AuthController extends Controller
 
     }
 
-    // public function postRegistration(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required|min:1',
-    //     ]);
+    public function postRegistration(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:1',
+        ]);
 
-    //     Alert::success('Account Created!','Please Login.');
+        Alert::success('Account Created!','Please Login.');
 
-    //     $data = $request->all();
-    //     $check = $this->create($data);
+        $data = $request->all();
+        $check = $this->create($data);
 
-    //     return redirect("login");
-    // }
+        return redirect("login");
+    }
 
     public function dashboard()
     {

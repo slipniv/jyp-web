@@ -30,10 +30,10 @@
             <div class="col-md-4">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap center">
                             <div class="nk-sale-data-group flex-md-nowrap g-4">
                                 <div class="nk-sale-data">
-                                    <div class="amount">
+                                    <div class="">
                                         <p class="links cl-effect-1">
                                             <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $driv }}</a>
                                         </p>
@@ -52,10 +52,10 @@
             <div class="col-md-4">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap center">
                             <div class="nk-sale-data-group flex-md-nowrap g-4">
                                 <div class="nk-sale-data">
-                                    <div class="amount">
+                                    <div class="">
                                         <p class="links cl-effect-1">
                                             <a class="effect" style="font-size: 34px" href="{{ route('schedule') }}">Total: {{ $pen }}</a>
                                         </p>
@@ -74,10 +74,10 @@
             <div class="col-md-4">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap center">
                             <div class="nk-sale-data-group flex-md-nowrap g-4">
                                 <div class="nk-sale-data">
-                                    <div class="amount">
+                                    <div class="">
                                         <p class="links cl-effect-1">
                                             <a class="effect" style="font-size: 34px" href="{{ route('ongoing') }}">Total: {{ $on }}</a>
                                         </p>
@@ -96,10 +96,10 @@
             <div class="col-md-4">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap center">
                             <div class="nk-sale-data-group flex-md-nowrap g-4">
                                 <div class="nk-sale-data">
-                                    <div class="amount center">
+                                    <div class="">
                                         <p class="links cl-effect-1">
                                             <a class="effect" style="font-size: 34px" href="{{ route('completed') }}">Total: {{ $co }}</a>
                                         </p>
@@ -118,10 +118,10 @@
             <div class="col-md-4">
                 <div class="card card-bordered">
                     <div class="card-inner">
-                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                        <div class="align-end gy-3 gx-5 flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap center">
                             <div class="nk-sale-data-group flex-md-nowrap g-4">
                                 <div class="nk-sale-data">
-                                    <div class="amount center">
+                                    <div class="">
                                         <p class="links cl-effect-1">
                                             <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $co }}</a>
                                         </p>
