@@ -15,25 +15,6 @@ class AccountController extends Controller
         return view('pages.account')->with('user', User::all());
     }
 
-    // public function updatePass(Request $request, $id)
-    // {
-    //     $newd = User::findOrFail($id);
-
-    //     if ($request->input('new') != $request->input('repeat')) {
-    //         Alert::error('New Password and Current Password did not match!');
-
-    //         return redirect('account');
-    //     } else if ($request->input('current') == $newd->password) {
-    //         $newd->password = $request->input('new');
-    //         $newd->save();
-
-    //         Alert::success('Admin Password Changed Successfully!');
-
-    //         return redirect('dashboard');
-    //     }
-
-    // }
-
     public function updateEmail(Request $request)
     {
 

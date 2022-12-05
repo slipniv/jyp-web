@@ -50,6 +50,7 @@
                 </div><!-- .nk-block-head-content -->
             </div>
         </div>
+        
 
         <div class="table-responsive">
             <table id="schedule_data" class="table table-striped">

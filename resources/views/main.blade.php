@@ -28,7 +28,7 @@
      counter-reset: num;
     }
 
-    h6::before {
+    h5::before {
     counter-increment: num;
     content: counter(num);
     }

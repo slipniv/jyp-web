@@ -71,7 +71,7 @@
                 <tbody>
                     @foreach ($disp as $dis)
                         <tr>
-                            <td><h6></h6></td>
+                            <td><h5></h5></td>
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
