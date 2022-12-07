@@ -123,7 +123,7 @@
                                 <div class="nk-sale-data">
                                     <div class="">
                                         <p class="links cl-effect-1">
-                                            <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $co }}</a>
+                                            <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $ov }}</a>
                                         </p>
                                     </div>
                                 </div>

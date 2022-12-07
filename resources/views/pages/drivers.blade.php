@@ -28,6 +28,7 @@
                         <td>Plate Number</td>
                         <td>Name</td>
                         <td>Contact Number</td>
+                        <td>Tracking Number</td>
                         <td>Action</td>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                             <td style="text-transform:uppercase">{{ $dis->platenumber }}</td>
                             <td>{{ $dis->fname }} <?= $mname ?> {{ $dis->lname }}</td>
                             <td>{{ $dis->contact }}</td>
+                            <td>{{ $dis->tracknum }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
                                 <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
@@ -91,6 +93,14 @@
                                     <label class="form-label" for="platenumber">Plate Number</label>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control" id="platenumber" name="platenumber" size="20" maxlength="20" style="text-transform:uppercase" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="tracknum">Track Number</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" onkeypress="return isNumber(event)" class="form-control" id="tracknum" name="tracknum" minlength="11" maxlength="11" required>
                                     </div>
                                 </div>
                             </div>

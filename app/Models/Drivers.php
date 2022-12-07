@@ -19,7 +19,7 @@ class Drivers extends Model
         'lname',
         'platenumber',
         'contact',
-        // 'tracknum'
+        'tracknum'
     );
 
 }

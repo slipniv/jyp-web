@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('mname');
             $table->string('platenumber')->unique();
             $table->string('contact')->unique();
-            //$table->string('tracknum')->unique();
+            $table->string('tracknum')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
