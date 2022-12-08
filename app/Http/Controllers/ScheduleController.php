@@ -38,6 +38,8 @@ class ScheduleController extends Controller
                 $news->arrivalDate = Carbon::now()->addDays(3);
                 $news->save();
             }
+        Alert::success('Schedule Updated!');
+
         return redirect('schedule');
 
     }
@@ -51,6 +53,9 @@ class ScheduleController extends Controller
         $news->time = $request->input('time');
         $news->status = 2;
         $news->save();
+
+        Alert::success('Schedule Added!');
+
         return redirect('schedule');
 
     }

@@ -42,7 +42,7 @@
                             <td>{{ $dis->tracknum }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
+                                <a data-bs-toggle="modal" href="#deleteDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</a>
                             </td>
                         </tr>
                     @endforeach
@@ -208,6 +208,27 @@
                 </div>
             </div> <!-- modal @e -->
         @endforeach
+        @foreach ($drivers_arr as $dd)
+            <div class="modal fade"  id="deleteDrivers-{{ $dd->id }}">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title center">Warning!</h5>
+                        <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <em class="icon ni ni-cross"></em>
+                        </a>
+                    </div>
+                    <div class="modal-body center">
+                        <p><h3>Temporary delete this driver?</h3></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
+                        <a href="#" class="link" data-bs-dismiss="modal">Cancel</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
 
         <script >
 
@@ -255,6 +276,7 @@
                     return false;
                 }
             });
+            
         </script>
 
 
