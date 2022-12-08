@@ -38,7 +38,7 @@ class DriversController extends Controller
         $newd->mname = $request->input('mname');
         $newd->platenumber = $request->input('platenumber');
         $newd->contact = $request->input('contact');
-        // $newd->tracknum = '09922993878';
+        $newd->tracknum = $request->input('tracknum');
         $newd->save();
 
         Alert::success('Driver updated Successfully!');

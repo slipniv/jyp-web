@@ -58,6 +58,8 @@ class LocationAPIController extends Controller
             $news->arrive = $date;
             $news->arrivet = $time;
             $news->save();
+
+            
         }
         if(!empty($query2->id) && $query2->arrivalDate < $date && number_format(floatval($query2->destination->latitude),3) == number_format(floatval($request->get('lat')),3) && number_format(floatval($query2->destination->longitude),3) == number_format(floatval($request->get('long')),3)){
             $news = Ongoing::find($query2->id);
