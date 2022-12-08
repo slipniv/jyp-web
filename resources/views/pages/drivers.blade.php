@@ -166,13 +166,13 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="tracknum">Tracking Number</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" onkeypress="return isNumber(event)" class="form-control" id="tracknum" name="tracknum" minlength="11" maxlength="11" required>
+                                    <div class="form-group">
+                                            <label class="form-label" for="tracknum">Tracking Number</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" onkeypress="return isNumber(event)" class="form-control" id="tracknum" name="tracknum" value="{{ $ed->tracknum }}" minlength="11" maxlength="11" required>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="form-label" for="platenumber">Plate Number</label>
