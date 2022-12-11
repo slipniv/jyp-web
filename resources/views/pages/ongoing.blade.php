@@ -94,7 +94,7 @@
 
                                 <td>
                                     <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
-                                    <a data-bs-toggle="modal" href="#editSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
+                                    <!-- <a data-bs-toggle="modal" href="#editSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a> -->
                                     <a class="btn btn-dim btn-sm icon ni ni-eye" style="margin-left: 2px;" href="{{ route('location')}}" id="view-location" data-id="{{ $dis->id }}"></a>
                                 </td>
                         </tr>

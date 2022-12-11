@@ -28,6 +28,7 @@
                         <td>Plate Number</td>
                         <td>Name</td>
                         <td>Contact Number</td>
+                        <td>Tracking Number</td>
                         <td>Action</td>
                     </tr>
                 </thead>
@@ -38,9 +39,10 @@
                             <td style="text-transform:uppercase">{{ $dis->platenumber }}</td>
                             <td>{{ $dis->fname }} <?= $mname ?> {{ $dis->lname }}</td>
                             <td>{{ $dis->contact }}</td>
+                            <td>{{ $dis->tracknum }}</td>
                             <td>
                                 <a data-bs-toggle="modal" href="#editDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Edit</a>
-                                <button href="{{ route('drivers') }}" type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
+                                <a data-bs-toggle="modal" href="#deleteDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</a>
                             </td>
                         </tr>
                     @endforeach
@@ -91,6 +93,14 @@
                                     <label class="form-label" for="platenumber">Plate Number</label>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control" id="platenumber" name="platenumber" size="20" maxlength="20" style="text-transform:uppercase" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="tracknum">Tracking Number</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" onkeypress="return isNumber(event)" class="form-control" id="tracknum" name="tracknum" minlength="11" maxlength="11" required>
                                     </div>
                                 </div>
                             </div>
@@ -156,6 +166,14 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
+                                    <div class="form-group">
+                                            <label class="form-label" for="tracknum">Tracking Number</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" onkeypress="return isNumber(event)" class="form-control" id="tracknum" name="tracknum" value="{{ $ed->tracknum }}" minlength="11" maxlength="11" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
                                         <div class="form-group">
                                             <label class="form-label" for="platenumber">Plate Number</label>
                                             <div class="form-control-wrap">
@@ -189,6 +207,27 @@
                     </div>
                 </div>
             </div> <!-- modal @e -->
+        @endforeach
+        @foreach ($drivers_arr as $dd)
+            <div class="modal fade"  id="deleteDrivers-{{ $dd->id }}">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title center">Warning!</h5>
+                        <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <em class="icon ni ni-cross"></em>
+                        </a>
+                    </div>
+                    <div class="modal-body center">
+                        <p><h3>Temporary delete this driver?</h3></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Archive</button>
+                        <a href="#" class="link" data-bs-dismiss="modal">Cancel</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
         @endforeach
 
         <script >
@@ -237,6 +276,7 @@
                     return false;
                 }
             });
+            
         </script>
 
 

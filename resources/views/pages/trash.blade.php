@@ -35,7 +35,7 @@
                             <td>{{ $dis->fname }} <?= $mname ?> {{ $dis->lname }}</td>
                             <td>{{ $dis->contact }}</td>
                             <td>
-                                <a href="{{ route('restoreDriver',['id' => $dis->id]) }}"><button class="btn btn-dim btn-sm btn-primary">Restore</button></a>
+                                <a data-bs-toggle="modal" href="#restoreDrivers-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">Restore</a>
                                 <button type="button" id="delete-driver" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button>
                             </td>
                         </tr>
@@ -43,6 +43,28 @@
                 </tbody>
             </table>
         </div>
+
+        @foreach ($ong as $dd)
+            <div class="modal fade"  id="restoreDrivers-{{ $dis->id }}">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title center">Warning!</h5>
+                        <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <em class="icon ni ni-cross"></em>
+                        </a>
+                    </div>
+                    <div class="modal-body center">
+                        <p><h3>Restore Driver?</h3></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ route('restoreDriver',['id' => $dis->id]) }}"><button class="btn btn-dim btn-sm btn-primary">Restore</button></a>
+                        <a href="#" class="link" data-bs-dismiss="modal">Cancel</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
 
 
         <script >

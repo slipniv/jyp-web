@@ -13,7 +13,7 @@
         ?>
         <div class="left">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Welcome admin!</h3>
+                <h3 class="nk-block-title page-title">Welcome {{ $user->name }}!</h3>
             </div><!-- .nk-block-head-content -->
         </div>
         <div class="right">
@@ -123,7 +123,7 @@
                                 <div class="nk-sale-data">
                                     <div class="">
                                         <p class="links cl-effect-1">
-                                            <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $co }}</a>
+                                            <a class="effect" style="font-size: 34px" href="{{ route('drivers') }}">Total: {{ $ov }}</a>
                                         </p>
                                     </div>
                                 </div>

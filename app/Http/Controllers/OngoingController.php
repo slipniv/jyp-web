@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Models\Ongoing;
 use App\Models\Completed;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OngoingController extends Controller
 {   
@@ -45,6 +46,8 @@ class OngoingController extends Controller
                 $news->arrivet = $time;
                 $news->save();
             }
+        Alert::success('Schedule Completed!');
+
         return redirect('ongoing');
 
     }

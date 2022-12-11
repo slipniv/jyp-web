@@ -45,6 +45,8 @@
 
      <!-- <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> -->
 
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   </head>
 <style type="text/css">

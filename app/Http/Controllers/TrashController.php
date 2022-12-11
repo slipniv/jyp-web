@@ -28,6 +28,9 @@ class TrashController extends Controller
         if(!is_null($ong)){
             $ong->restore();
         }
+        
+        Alert::success('Driver restored Successfully!');
+
         return redirect('archive');
     }
 }

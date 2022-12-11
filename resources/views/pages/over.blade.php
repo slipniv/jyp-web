@@ -58,7 +58,7 @@
                         <td>ID</td>
                         <td>Name</td>
                         <td>Destination</td>
-                        <td>Arrived Date</td>
+                        <td>Over Date</td>
                         <td><center>Status</center></td>
                         <td>Action</td>
                     </tr>
@@ -69,7 +69,7 @@
                             <td>{{ $dis->id }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
-                            <td>{{ date('F j, Y',strtotime($dis->arrive)) }}</td>
+                            <td>{{ date('F j, Y',strtotime($dis->overtime)) }}</td>
                             <td class="center">
                                 <?php
                                 if($dis->status_id == 1){
@@ -80,6 +80,10 @@
                                   ?>
                                   <label class="badge badge-sm badge-dim bg-outline-info d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Ongoing</label>
                                   <?php
+                                }elseif($dis->status_id == 4){
+                                ?>
+                                <label class="badge badge-sm badge-dim bg-outline-warning d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Overdue</label>
+                                <?php
                                 }else{
                                   ?>
                                   <label class="badge badge-sm badge-dim bg-outline-danger d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Pending</label>
@@ -159,17 +163,9 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="form-label">Arrival Time</label>
+                                        <label class="form-label">Overdue Time</label>
                                         <div class="form-control-wrap ">
                                             <input value="{{ date('h:i A',strtotime($es->arrivet)) }}" class="form-control" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Remarks</label>
-                                        <div class="form-control-wrap ">
-                                            <textarea class="form-control">{{ $es->remarks }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -185,6 +181,10 @@
                                             }elseif($dis->status_id == 3){
                                             ?>
                                             <label class="badge badge-sm badge-dim bg-outline-info d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Ongoing</label>
+                                            <?php
+                                            }elseif($dis->status_id == 4){
+                                            ?>
+                                            <label class="badge badge-sm badge-dim bg-outline-warning d-none d-md-inline-flex" style="text-transform: uppercase; letter-spacing: 1px;">Overdue</label>
                                             <?php
                                             }else{
                                             ?>

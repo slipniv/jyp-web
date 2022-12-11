@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Drivers;
 use App\Models\Destination;
+use App\Models\User;
 
 class Dashboard extends Model
 {
@@ -17,5 +18,6 @@ class Dashboard extends Model
     public function destination(){
         return $this->hasOne(Destination::class,'id','destination_id');
     }
+
 
 }
