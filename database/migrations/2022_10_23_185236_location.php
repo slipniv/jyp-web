@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('location', function (Blueprint $table) {
             $table->id();
-            $table->string('longitude');
             $table->string('latitude');
+            $table->string('longitude');
             $table->integer('driver_id');
             $table->rememberToken();
             $table->timestamps();
