@@ -13,8 +13,8 @@ class Location extends Model
     protected $primaryKey = 'id';
     protected $fillable = array (
         'id',
-        'longitude',
-        'latitude'
+        'latitude',
+        'longitude'
     );
 
     public function driver(){

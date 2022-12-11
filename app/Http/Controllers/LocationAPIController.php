@@ -29,8 +29,8 @@ class LocationAPIController extends Controller
     {
         $query = Drivers::query()->where('tracknum',$request->get('number'))->first();
         $news = new Location();
-        $news->longitude = $request->get('long');
         $news->latitude = $request->get('lat');
+        $news->longitude = $request->get('long');
         $news->driver_id = $query->id;
         $news->save();
         return ['Message'=> 'Success'];
