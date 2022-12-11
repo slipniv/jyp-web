@@ -34,7 +34,7 @@ var marker;
                     $('#pin').on('change',function(){
                     // Initialize map
 
-                    marker = L.marker([$('#pin ').find(':selected').attr('data-longitude'), $('#pin').find(':selected').attr('data-latitude')]).addTo(map);
+                    marker = L.marker([$('#pin ').find(':selected').attr('data-latitude'), $('#pin').find(':selected').attr('data-longitude')]).addTo(map);
                     map.addLayer(marker);
                     marker.bindPopup(`<b>Ongoing Delivery</b><br> ${$('#pin').find(':selected').text()}`).openPopup();
 
