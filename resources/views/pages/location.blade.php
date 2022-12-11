@@ -21,7 +21,7 @@
 
 var marker;
             $(document).ready(function(){
-                var map = L.map('map').setView(['8.4542','124.6319'], 10);
+                var map = L.map('map').setView(['8.4542','124.6319'], 18);
                 var markerArray = [];
                 // Map
                 L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=SQBQ9GFuIgQnIQjD3uVy', {
