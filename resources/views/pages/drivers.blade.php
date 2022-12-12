@@ -145,7 +145,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="fname">First Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="inputTextBox" name="fname" value="{{ $ed->fname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="fname" value="{{ $ed->fname }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="mname">Middle Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="inputTextBox" name="mname" value="{{ $ed->mname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="mname" value="{{ $ed->mname }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="lname">Last Name</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="inputTextBox" name="lname" value="{{ $ed->lname }}">
+                                                <input type="text" class="form-control" id="inputTextBox" name="lname" value="{{ $ed->lname }}" required>
                                             </div>
                                         </div>
                                     </div>

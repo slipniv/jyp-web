@@ -15,6 +15,12 @@ class DriversController extends Controller
 
     public function add(Request $request){
 
+        if(empty($request->input('platenumber'))){
+            Alert::error('Plate number is empty!');
+
+            return redirect('drivers');
+        }
+
         $newd = new Drivers();
         $newd->fname = $request->input('fname');
         $newd->lname = $request->input('lname');
@@ -31,6 +37,12 @@ class DriversController extends Controller
     }
 
     public function update(Request $request, $id){
+
+        if(empty($request->input('platenumber'))){
+            Alert::error('Plate number is empty!');
+
+            return redirect('drivers');
+        }
 
         $newd = Drivers::findOrFail($id);
         $newd->fname = $request->input('fname');
