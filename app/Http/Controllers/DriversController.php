@@ -15,6 +15,21 @@ class DriversController extends Controller
 
     public function add(Request $request){
 
+        $query2 = Drivers::query()->where('contact',$request->input('contact'))->first();
+        $query = Drivers::query()->where('platenumber',$request->input('platenumber'))->first();
+
+        if(!empty($query)){
+            Alert::error('Plate number already exists!');
+
+            return redirect('drivers');
+        }
+
+        if(!empty($query2)){
+            Alert::error('Contact number already exists!');
+
+            return redirect('drivers');
+        }
+
         if(empty($request->input('platenumber'))){
             Alert::error('Plate number is empty!');
 

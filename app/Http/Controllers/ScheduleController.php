@@ -46,6 +46,14 @@ class ScheduleController extends Controller
 
     public function add(Request $request){
 
+        $query = Schedule::query()->where('driver_id',$request->input('Drivername'))->where('status',2)->first();
+
+        if(!empty($query)){
+            Alert::error('Driver already had a schedule!');
+
+            return redirect('schedule');
+        }
+
         $news = new Schedule();
         $news->driver_id = $request->input('Drivername');
         $news->destination_id = $request->input('DestinationLoc');

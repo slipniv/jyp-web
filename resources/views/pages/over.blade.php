@@ -155,17 +155,9 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label class="form-label">Arrival Date</label>
-                                        <div class="form-control-wrap ">
-                                            <input value="{{ date('F j, Y',strtotime($es->arrive)) }}" class="form-control" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
                                         <label class="form-label">Overdue Time</label>
                                         <div class="form-control-wrap ">
-                                            <input value="{{ date('h:i A',strtotime($es->arrivet)) }}" class="form-control" disabled>
+                                            <input value="{{ date('h:i A',strtotime($es->overtime)) }}" class="form-control" disabled>
                                         </div>
                                     </div>
                                 </div>

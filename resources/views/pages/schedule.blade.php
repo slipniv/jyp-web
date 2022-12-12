@@ -172,7 +172,7 @@
                                             </div>
                                             <div class="w-45">
                                                 <div class="form-control-wrap">
-                                                    <input type="TIME" id="time" name="time" class="form-control">
+                                                    <input type="TIME" id="time" name="time" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>
