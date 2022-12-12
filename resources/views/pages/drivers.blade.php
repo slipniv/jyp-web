@@ -178,7 +178,7 @@
                                             <label class="form-label" for="platenumber">Plate Number</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="platenumber"
-                                                    name="platenumber" style="text-transform:uppercase" value="{{ $ed->platenumber }}">
+                                                    name="platenumber" style="text-transform:uppercase" value="{{ $ed->platenumber }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                             <label class="form-label" for="contact">Contact Number</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" onkeypress="return isNumber(event)" class="form-control" id="contact" name="contact"
-                                                    value="{{ $ed->contact }}" minlength="11" maxlength="11">
+                                                    value="{{ $ed->contact }}" minlength="11" maxlength="11" required>
                                             </div>
                                         </div>
                                     </div>
