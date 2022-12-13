@@ -1,13 +1,6 @@
 @extends('main')
 
 @section('content')
-        <?php
-        foreach ($disp as $dis){
-            $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
-        }
-
-        ?>
-
 
         <div class="row">
             <div class="colo">
@@ -74,7 +67,7 @@
                             <td><h4></h4></td>
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->driver? $dis->driver->platenumber: ''}}</td>
-                            <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
+                            <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('h:i A',strtotime($dis->time)) }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->date)) }}</td>
@@ -95,13 +88,16 @@
                                 }
                                 ?>
                             </td>
-
+                            
                                 <td>
+                                    @if ($loop->index==0? "disabled=''":"")
                                     <a data-bs-toggle="modal" href="#viewSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
                                     <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
                                     {{-- <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Send Message" class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href="javascript:;" id="send-message" data-id="{{ $dis->id }}"></a>
+                                    @endif
                                 </td>
+                            
                         </tr>
                     @endforeach
                 </tbody>

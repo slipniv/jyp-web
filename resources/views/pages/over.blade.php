@@ -2,12 +2,6 @@
 
 @section('content')
 
-        <?php
-        foreach ($ong as $dis){
-            $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
-        }
-
-        ?>
 
 
         <div class="row">
@@ -67,7 +61,7 @@
                     @foreach ($ong as $dis)
                         <tr>
                             <td>{{ $dis->id }}</td>
-                            <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
+                            <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->overtime)) }}</td>
                             <td class="center">

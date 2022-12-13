@@ -3,9 +3,6 @@
 @section('content')
 
         <?php
-        foreach ($ong as $dis){
-            $mname = Str::of($dis->driver? $dis->driver->mname: '')->limit(1,'.');
-        }
 
         date_default_timezone_set('Asia/Manila');
 
@@ -109,7 +106,7 @@
                             <button type="submit" role="button" class="button-80" name="search" title="Search">🔎︎</button>
                         </div>
                         <div class="col-sm-1">
-                            <a type="submit" href="#" class="myButton"  onclick="fnExcelReport();">Print</a>
+                            <a type="submit" href="#" class="myButton"  onclick="fnExcelReport();">Export to Excel</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +130,7 @@
                     @foreach ($ong as $dis)
                         <tr>
                             <td>{{ $dis->deliver_id }}</td>
-                            <td>{{ $dis->driver? $dis->driver->fname: '' }} <?= $mname ?> {{ $dis->driver? $dis->driver->lname: '' }}</td>
+                            <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->arrive)) }}</td>
                             <td class="center">
