@@ -1,12 +1,7 @@
 @extends('main')
 
 @section('content')
-        <?php
-        foreach ($drivers_arr as $dis){
-            $mname = Str::of($dis->mname)->limit(1,'.');
-        }
-
-        ?>
+        
 
 
     <div class="nk-block-head nk-block-head-sm">
@@ -37,7 +32,7 @@
                         <tr>
                             <td>{{ $dis->id }}</td>
                             <td style="text-transform:uppercase">{{ $dis->platenumber }}</td>
-                            <td>{{ $dis->fname }} <?= $mname ?> {{ $dis->lname }}</td>
+                            <td>{{ $dis->fname }} <?= Str::of($dis->mname)->limit(1,'.') ?> {{ $dis->lname }}</td>
                             <td>{{ $dis->contact }}</td>
                             <td>{{ $dis->tracknum }}</td>
                             <td>
