@@ -19,7 +19,7 @@ class OverController extends Controller
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
-        $query = Over::query()->select()->where('arrive', '>=', $fromDate)->where('arrive', '<=', $toDate)->get();
+        $query = Over::query()->select()->where('overdate', '>=', $fromDate)->where('overdate', '<=', $toDate)->get();
         return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => $query , 'area' => Destination::all(), 'from' => $fromDate, 'to' => $toDate]);
     }
 }

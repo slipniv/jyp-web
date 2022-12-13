@@ -59,14 +59,21 @@ class DriversController extends Controller
             return redirect('drivers');
         }
 
-        $newd = Drivers::findOrFail($id);
-        $newd->fname = $request->input('fname');
-        $newd->lname = $request->input('lname');
-        $newd->mname = $request->input('mname');
-        $newd->platenumber = $request->input('platenumber');
-        $newd->contact = $request->input('contact');
-        $newd->tracknum = $request->input('tracknum');
-        $newd->save();
+        try {
+            $newd = Drivers::findOrFail($id);
+            $newd->fname = $request->input('fname');
+            $newd->lname = $request->input('lname');
+            $newd->mname = $request->input('mname');
+            $newd->platenumber = $request->input('platenumber');
+            $newd->contact = $request->input('contact');
+            $newd->tracknum = $request->input('tracknum');
+            $newd->save();
+        } catch (\Illuminate\Database\QueryException $exception) {
+            Alert::Error('Tracking or Contact number already Exists!');
+            return redirect('drivers');//\Illuminate\Database\QueryException
+        }
+
+        
 
         Alert::success('Driver updated Successfully!');
 

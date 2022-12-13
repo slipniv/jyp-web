@@ -106,7 +106,7 @@
                             <button type="submit" role="button" class="button-80" name="search" title="Search">🔎︎</button>
                         </div>
                         <div class="col-sm-1">
-                            <a type="submit" href="#" class="myButton"  onclick="fnExcelReport();">Export to Excel</a>
+                            <button type="submit" href="#" class="myButton"  onclick="fnExcelReport();">Excel</button>
                         </div>
                     </div>
                 </div>
@@ -122,8 +122,8 @@
                         <td>Name</td>
                         <td>Destination</td>
                         <td>Arrived Date</td>
+                        <td>Arrived Time</td>
                         <td><center>Status</center></td>
-                        <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,6 +133,7 @@
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
                             <td>{{ date('F j, Y',strtotime($dis->arrive)) }}</td>
+                            <td>{{ date('h:i A',strtotime($dis->arrivet)) }}</td>
                             <td class="center">
                                 <?php
                                 if($dis->status_id == 1){
@@ -150,9 +151,9 @@
                                 }
                                 ?>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <a data-bs-toggle="modal" href="#viewSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
