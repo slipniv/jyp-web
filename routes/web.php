@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('history', [HistoryController::class, 'index'])->name('history');
     Route::get('location', [LocationController::class, 'index'])->name('location');
     Route::get('schedule', [ScheduleController::class, 'index'])->name('schedule');
+    Route::get('pastDeliveries', [ScheduleController::class, 'past'])->name('pastDeliveries');
 
     Route::get('ongoing', [OngoingController::class, 'index'])->name('ongoing');
     Route::post('updateSched/{id}', [OngoingController::class, 'update'])->name('updateSched');
@@ -89,4 +90,5 @@ Route::middleware('auth')->group(function () {
     Route::post('updateSchedule/{id}', [ScheduleController::class, 'update'])->name('updateSchedule');
     Route::post('deleteSchedule/{id}', [ScheduleController::class, 'delete'])->name('deleteSchedule');
     Route::post('sendMessage/{id}', [ScheduleController::class, 'send'])->name('sendSchedule');
+    Route::post('searchDate', [ScheduleController::class, 'search'])->name('search');
 });

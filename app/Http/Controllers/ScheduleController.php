@@ -15,16 +15,27 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        return view('pages.schedule')->with(['sched_arr' => Drivers::all(), 'disp' => Schedule::query()->with('driver')->with('destination')->where('status', 2)->get(), 'area' => Destination::all()]);
+        return view('pages.schedule')->with(['sched_arr' => Drivers::all(), 'disp' => Schedule::query()->with('driver')->with('destination')->where('status', 2)->orderBy('date', 'asc')->orderBy('time', 'asc')->get(), 'area' => Destination::all()]);
+    }
+    public function past()
+    {
+        return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => Schedule::query()->with('driver')->with('destination')->orderBy('date', 'asc')->orderBy('time', 'asc')->get(), 'area' => Destination::all()]);
     }
 
     public function update(Request $request, $id){
 
+        $query2 = Ongoing::where('driver_id',$request->input('Drivername'))->where('status_id',3)->first();
+
+        if(!empty($query2)){
+            Alert::error('Driver already had a schedule!');
+
+            return redirect('schedule');
+        }
+
         $news = Schedule::findOrFail($id);
         $news->driver_id = $request->input('Drivername');
         $news->destination_id = $request->input('DestinationLoc');
-        $news->date = $request->input('date');
-        $news->time = $request->input('time');
+        $news->date = Carbon::now();
         $news->status = $request->input('status');
         $news->save();
             if($request->input('status') == 3){
@@ -46,7 +57,8 @@ class ScheduleController extends Controller
 
     public function add(Request $request){
 
-        $query = Schedule::query()->where('driver_id',$request->input('Drivername'))->where('status',2)->first();
+        $query = Schedule::where('driver_id',$request->input('Drivername'))->where('status',2)->first();
+        
 
         if(!empty($query)){
             Alert::error('Driver already had a schedule!');
@@ -57,7 +69,7 @@ class ScheduleController extends Controller
         $news = new Schedule();
         $news->driver_id = $request->input('Drivername');
         $news->destination_id = $request->input('DestinationLoc');
-        $news->date = $request->input('date');
+        $news->date = Carbon::now();
         $news->time = $request->input('time');
         $news->status = 2;
         $news->save();
@@ -85,5 +97,13 @@ class ScheduleController extends Controller
 
         Alert::success('Message Sent!');
 
+    }
+
+    public function search(Request $request){
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+
+        $query = Schedule::query()->select()->where('date', '>=', $fromDate)->where('date', '<=', $toDate)->get();
+        return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => $query, 'area' => Destination::all(), 'from' => $fromDate, 'to' => $toDate]);
     }
 }

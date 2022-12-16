@@ -95,6 +95,7 @@
                                     <a data-bs-toggle="modal" href="#editSchedule-{{ $dis->id }}" class="btn btn-dim btn-sm btn-secondary">Edit</a>
                                     {{-- <button type="button" id="delete-schedule" data-driver="{{ $dis->id }}" class="btn btn-dim btn-sm btn-danger">Delete</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Send Message" class="btn btn-dim btn-sm icon ni ni-mail-fill" style="margin-left: 2px;" href="javascript:;" id="send-message" data-id="{{ $dis->id }}"></a>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Schedule" class="btn btn-dim btn-sm icon ni ni-trash" style="margin-left: 2px;" href="javascript:;" id="delete-schedule" data-driver="{{ $dis->id }}"></a>
                                     @endif
                                 </td>
                             
@@ -159,13 +160,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label class="form-label">Date & Time</label>
+                                        <label class="form-label">Time</label>
                                         <div class="row gx-2">
-                                            <div class="w-55">
-                                                <div class="form-control-wrap">
-                                                    <input type="date" id="date" name="date" class="form-control" min="<?=$date?>" data-date-format="yyyy-mm-dd" required>
-                                                </div>
-                                            </div>
                                             <div class="w-45">
                                                 <div class="form-control-wrap">
                                                     <input type="TIME" id="time" name="time" class="form-control" required>
@@ -227,23 +223,6 @@
                                                     <option value="{{ $dd->id }}" {{ $es->destination_id ==  $dd->id? "selected": "" }}>{{ $dd->area }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="form-label">Date & Time</label>
-                                        <div class="row gx-2">
-                                            <div class="w-55">
-                                                <div class="form-control-wrap">
-                                                    <input value="{{ $es->date }}" type="date" id="date" name="date" min="<?=$date?>" class="form-control" data-date-format="yyyy-mm-dd" required>
-                                                </div>
-                                            </div>
-                                            <div class="w-45">
-                                                <div class="form-control-wrap">
-                                                    <input value="{{ $es->time }}" type="time" id="time" name="time" class="form-control" required>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -370,7 +349,12 @@
         <script >
 
             $(document).ready(function() {
-                $('#schedule_data').DataTable();
+                $('#schedule_data').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
                 $('body').on('click','#delete-schedule', function () {
                     var driverId = $(this).attr('data-driver');
                     $.ajaxSetup({
