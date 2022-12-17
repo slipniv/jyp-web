@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <form action="searchDate" method="POST">
+        <form action="overdueSearchDate" method="POST">
             @csrf
             <br>
             <div class="container">
@@ -113,6 +113,8 @@
                         <td>ID</td>
                         <td>Name</td>
                         <td>Destination</td>
+                        <td>Overdue Date</td>
+                        <td>Overdue Time</td>
                         <td><center>Status</center></td>
                     </tr>
                 </thead>
@@ -122,6 +124,8 @@
                             <td>{{ $dis->id }}</td>
                             <td>{{ $dis->driver? $dis->driver->fname: '' }} {{ $dis->driver? $dis->driver->lname: '' }}</td>
                             <td>{{ $dis->destination? $dis->destination->area: '' }}</td>
+                            <td>{{ date('F j, Y',strtotime($dis->overdate)) }}</td>
+                            <td>{{ date('h:i A',strtotime($dis->overtime)) }}</td>
                             <td class="center">
                                 <?php
                                 if($dis->status_id == 1){

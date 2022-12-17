@@ -88,7 +88,7 @@
         </div>
         
 
-        <form action="searchDate" method="POST">
+        <form action="completedSearchDate" method="POST">
             @csrf
             <br>
             <div class="container">

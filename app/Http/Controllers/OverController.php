@@ -12,7 +12,7 @@ class OverController extends Controller
 {
     public function index()
     {
-        return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Over::query()->with('deliver')->with('driver')->with('destination')->where('status_id', 4)->get(), 'area' => Destination::all()]);
+        return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Over::query()->with('deliver')->with('driver')->with('destination')->where('status_id', 4)->orderBy('overdate', 'asc')->orderBy('overtime', 'asc')->get(), 'area' => Destination::all()]);
     }
 
     public function search(Request $request){

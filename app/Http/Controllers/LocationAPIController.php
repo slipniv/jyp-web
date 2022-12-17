@@ -31,6 +31,7 @@ class LocationAPIController extends Controller
      */
     public function store(Request $request)
     {
+
         date_default_timezone_set('Asia/Manila');
 
             $date = date('Y-m-d');
@@ -43,7 +44,7 @@ class LocationAPIController extends Controller
         $news->driver_id = $query->id;
         $news->save();
         $query2 = Ongoing::query()->with('driver')->with('destination')->where('driver_id', $query->id)->where('status_id', 3)->first();
-        if(!empty($query2->id) && $query2->arrivalDate >= $date && number_format(floatval($query2->destination->latitude),4) == number_format(floatval($request->get('lat')),4) && number_format(floatval($query2->destination->longitude),4) == number_format(floatval($request->get('long')),4)){
+        if(!empty($query2->id) && $query2->arrivalDate >= $date && number_format(floatval($query2->destination->latitude),3) == number_format(floatval($request->get('lat')),3) && number_format(floatval($query2->destination->longitude),4) == number_format(floatval($request->get('long')),4)){
             $news = Ongoing::find($query2->id);
             $news->status_id = 1;
             $news->save();
@@ -61,7 +62,7 @@ class LocationAPIController extends Controller
 
             
         }
-        if(!empty($query2->id) && $query2->arrivalDate < $date && number_format(floatval($query2->destination->latitude),4) == number_format(floatval($request->get('lat')),4) && number_format(floatval($query2->destination->longitude),4) == number_format(floatval($request->get('long')),4)){
+        if(!empty($query2->id) && $query2->arrivalDate < $date && number_format(floatval($query2->destination->latitude),3) == number_format(floatval($request->get('lat')),3) && number_format(floatval($query2->destination->longitude),4) == number_format(floatval($request->get('long')),4)){
             $news = Ongoing::find($query2->id);
             $news->status_id = 4;
             $news->save();

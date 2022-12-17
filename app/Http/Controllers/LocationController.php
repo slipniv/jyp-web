@@ -8,6 +8,9 @@ use App\Models\Drivers;
 
 class LocationController extends Controller
 {
+
+    public $reloadTimeout = 10;
+
     public function index()
     {
         $query = Drivers::query()->get();

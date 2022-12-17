@@ -69,10 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::post('updateSched/{id}', [OngoingController::class, 'update'])->name('updateSched');
 
     Route::get('completed', [CompletedController::class, 'index'])->name('completed');
-    Route::post('searchDate', [CompletedController::class, 'search'])->name('search');
+    Route::post('completedSearchDate', [CompletedController::class, 'search'])->name('search');
 
     Route::get('overdue', [OverController::class, 'index'])->name('overdue');
-    Route::post('searchDate', [OverController::class, 'search'])->name('search');
+    Route::post('overdueSearchDate', [OverController::class, 'search'])->name('search');
 
     Route::get('account', [AccountController::class, 'index'])->name('account');
     Route::post('updatePass/{id}', [AccountController::class, 'updatePass'])->name('updatePass');

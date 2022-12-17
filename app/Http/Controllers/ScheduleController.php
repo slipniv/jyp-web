@@ -103,7 +103,7 @@ class ScheduleController extends Controller
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
-        $query = Schedule::query()->select()->where('date', '>=', $fromDate)->where('date', '<=', $toDate)->get();
+        $query = Schedule::query()->orderBy('date', 'asc')->orderBy('time', 'asc')->select()->where('date', '>=', $fromDate)->where('date', '<=', $toDate)->get();
         return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => $query, 'area' => Destination::all(), 'from' => $fromDate, 'to' => $toDate]);
     }
 }
