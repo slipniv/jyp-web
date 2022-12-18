@@ -151,9 +151,6 @@
                                 }
                                 ?>
                             </td>
-                            {{-- <td>
-                                <a data-bs-toggle="modal" href="#viewSched-{{ $dis->id }}" class="btn btn-dim btn-sm btn-primary">View</a>
-                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -271,8 +268,10 @@
         <script >
 
             $(document).ready(function() {
-                $('#schedule_data').DataTable();
-
+                $('#schedule_data').DataTable({
+                    "ordering": false
+                });
+                
             } );
         </script>
 

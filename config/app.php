@@ -182,6 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Arrilot\Widgets\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -211,6 +212,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Widget' => Arrilot\Widgets\Facade::class,
+        'ASyncWidget' => Arrilot\Widgets\AsyncFacade::class,
     ])->toArray(),
 
 ];

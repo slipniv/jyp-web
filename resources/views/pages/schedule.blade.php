@@ -350,10 +350,7 @@
 
             $(document).ready(function() {
                 $('#schedule_data').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+                    "ordering": false
                 });
                 $('body').on('click','#delete-schedule', function () {
                     var driverId = $(this).attr('data-driver');

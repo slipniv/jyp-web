@@ -228,7 +228,9 @@
         <script >
 
             $(document).ready(function() {
-                $('#schedule_data').DataTable();
+                $('#schedule_data').DataTable({
+                    "ordering": false
+                });
 
                 $('body').on('click','#delete-driver', function () {
                     var driverId = $(this).attr('data-driver');

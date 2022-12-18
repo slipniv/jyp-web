@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\Drivers;

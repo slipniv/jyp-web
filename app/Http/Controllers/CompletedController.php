@@ -12,7 +12,7 @@ class CompletedController extends Controller
 {
     public function index()
     {
-        return view('pages.completed')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Completed::query()->with('ongoing')->with('deliver')->with('driver')->with('destination')->where('status_id', 1)->get(), 'area' => Destination::all()]);
+        return view('pages.completed')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Completed::with('ongoing')->with('deliver')->with('driver')->with('destination')->where('status_id', 1)->orderBy('arrive', 'asc')->orderBy('arrivet', 'asc')->get(), 'area' => Destination::all()]);
     }
 
     public function search(Request $request){

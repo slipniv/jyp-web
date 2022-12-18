@@ -250,7 +250,9 @@
         <script >
 
             $(document).ready(function() {
-                $('#overdue_data').DataTable();
+                $('#overdue_data').DataTable({
+                    "ordering": false
+                });
             });
         </script>
 
