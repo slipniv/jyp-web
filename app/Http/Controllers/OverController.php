@@ -12,14 +12,14 @@ class OverController extends Controller
 {
     public function index()
     {
-        return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Over::query()->with('deliver')->with('driver')->with('destination')->where('status_id', 4)->orderBy('overdate', 'asc')->orderBy('overtime', 'asc')->get(), 'area' => Destination::all()]);
+        return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => Over::query()->with('deliver')->with('driver')->with('destination')->where('status_id', 4)->orderBy('overdate', 'desc')->orderBy('overtime', 'desc')->get(), 'area' => Destination::all()]);
     }
 
     public function search(Request $request){
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
-        $query = Over::query()->select()->where('overdate', '>=', $fromDate)->where('overdate', '<=', $toDate)->get();
+        $query = Over::query()->select()->orderBy('overdate', 'desc')->orderBy('overtime', 'desc')->where('overdate', '>=', $fromDate)->where('overdate', '<=', $toDate)->get();
         return view('pages.over')->with(['dat' => Ongoing::all(), 'sched_arr' => Drivers::all(), 'ong' => $query , 'area' => Destination::all(), 'from' => $fromDate, 'to' => $toDate]);
     }
 }

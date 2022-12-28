@@ -19,7 +19,7 @@ class ScheduleController extends Controller
     }
     public function past()
     {
-        return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => Schedule::query()->with('driver')->with('destination')->orderBy('date', 'asc')->orderBy('time', 'asc')->get(), 'area' => Destination::all()]);
+        return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => Schedule::query()->with('driver')->with('destination')->orderBy('date', 'desc')->orderBy('time', 'desc')->get(), 'area' => Destination::all()]);
     }
 
     public function update(Request $request, $id){
@@ -103,7 +103,7 @@ class ScheduleController extends Controller
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
 
-        $query = Schedule::query()->orderBy('date', 'asc')->orderBy('time', 'asc')->select()->where('date', '>=', $fromDate)->where('date', '<=', $toDate)->get();
+        $query = Schedule::query()->orderBy('date', 'desc')->orderBy('time', 'desc')->select()->where('date', '>=', $fromDate)->where('date', '<=', $toDate)->get();
         return view('pages.pastdeliveries')->with(['sched_arr' => Drivers::all(), 'disp' => $query, 'area' => Destination::all(), 'from' => $fromDate, 'to' => $toDate]);
     }
 }
